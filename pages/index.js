@@ -12,7 +12,7 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				<h1 className={styles.title}>Welcome to Star Wars Meet 'n Greet!</h1>
+				<h1 className={styles.title}>Welcome to Star Wars Meet & Greet!</h1>
 			</main>
 
 			<footer className={styles.footer}>
