@@ -1,7 +1,7 @@
-export default function CharacterPage() {
+export default function CharactersListPage() {
 	return (
 		<div>
-			<h1>Luke Skywalker</h1>
+			<h1>Star Wars Characters</h1>
 			<ul>
 				<div>
 					<h3>About Me:</h3>

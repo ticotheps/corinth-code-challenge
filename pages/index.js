@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 export default function HomePage() {
@@ -12,7 +13,19 @@ export default function HomePage() {
 			</Head>
 
 			<main className={styles.main}>
-				<h1 className={styles.title}>Welcome to Star Wars Meet & Greet!</h1>
+				<h1 className={styles.title}>Star Wars Meet & Greet</h1>
+				<h2>Welcome to 'Star Wars Meet & Greet'!</h2>
+				<div>
+					<p>
+						We'll be your one-stop-shop for learning all about your favorite
+						Star Wars characters and more!
+					</p>
+				</div>
+				<div>
+					<h3>
+						<Link href='/character'>Characters</Link>
+					</h3>
+				</div>
 			</main>
 
 			<footer className={styles.footer}>
