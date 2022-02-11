@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 export default function CharacterPage() {
 	const router = useRouter();
 
-	console.log(router.pathname);
 	console.log(router.query);
+	console.log(router.pathname);
 
 	return (
 		<div>
