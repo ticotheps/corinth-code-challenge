@@ -14,17 +14,16 @@ export default function HomePage() {
 
 			<main className={styles.main}>
 				<h1 className={styles.title}>Star Wars Meet & Greet</h1>
-				<h2>Welcome to 'Star Wars Meet & Greet'!</h2>
 				<div>
-					<p>
-						We'll be your one-stop-shop for learning all about your favorite
+					<h2>
+						Welcome to your one-stop-shop for learning all about your favorite
 						Star Wars characters and more!
-					</p>
+					</h2>
 				</div>
 				<div>
-					<h3>
+					<h2>
 						<Link href='/character'>Characters</Link>
-					</h3>
+					</h2>
 				</div>
 			</main>
 

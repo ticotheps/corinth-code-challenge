@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import styles from '../../styles/Home.module.css';
 
 export default function CharactersListPage() {
 	const characters = [
@@ -20,17 +21,18 @@ export default function CharactersListPage() {
 		},
 	];
 	return (
-		<div>
-			<h1>Star Wars Characters</h1>
-			<div>
-				<ul>
-					{characters.map((character) => (
-						<li key={character.id}>
-							<Link href={`/character/${character.id}`}>{character.name}</Link>
-						</li>
-					))}
-				</ul>
-			</div>
+		<div className={styles.container}>
+			<h1 className={styles.title}>Star Wars Characters</h1>
+
+			<ul className={styles.cardContainer}>
+				{characters.map((character) => (
+					<Link href={`/character/${character.id}`} key={character.id}>
+						<div className={styles.card}>
+							<p>{character.name}</p>
+						</div>
+					</Link>
+				))}
+			</ul>
 		</div>
 	);
 }
