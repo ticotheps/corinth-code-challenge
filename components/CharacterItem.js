@@ -2,13 +2,14 @@ import Link from 'next/link';
 import styles from '../styles/CharacterItem.module.css';
 
 export default function CharacterItem(props) {
-	const { character } = props;
+	const { id, image, name } = props.character;
+	const characterDetailsPageLink = `/characters/${id}`;
 
 	return (
-		<Link href={`/characters/${character.id}`} key={character.id}>
+		<Link href={characterDetailsPageLink} key={id}>
 			<div className={styles.card}>
-				<img src={character.image} alt={character.name} />
-				<p>{character.name}</p>
+				<img src={image} alt={name} />
+				<p>{name}</p>
 			</div>
 		</Link>
 	);

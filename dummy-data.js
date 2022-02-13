@@ -91,7 +91,7 @@ export function getAllCharacters() {
 	return DUMMY_CHARACTERS;
 }
 
-// Returns a specific character, by a given "id", from "DUMMY_CHARACTERS" array.
+// Returns a specific character by id from "DUMMY_CHARACTERS" array.
 export function getCharacterById(id) {
 	return DUMMY_CHARACTERS.find((character) => character.id === id);
 }
