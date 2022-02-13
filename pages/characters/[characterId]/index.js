@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-export default function CharacterPage() {
+export default function CharacterDetailsPage() {
 	const router = useRouter();
 
 	console.log(router.query);
