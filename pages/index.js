@@ -20,10 +20,10 @@ export default function HomePage() {
 						Star Wars characters and more!
 					</h2>
 				</div>
-				<div>
-					<h2>
-						<Link href='/character'>Characters</Link>
-					</h2>
+				<div className={styles.cardContainer}>
+					<Link href='/characters'>
+						<h2 className={styles.card}>Characters List</h2>
+					</Link>
 				</div>
 			</main>
 
