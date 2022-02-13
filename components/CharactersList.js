@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import CharacterItem from './CharacterItem';
 import styles from '../styles/CharactersList.module.css';
 
 export default function CharactersList(props) {
@@ -7,12 +7,7 @@ export default function CharactersList(props) {
 	return (
 		<ul className={styles.cardContainer}>
 			{characters.map((character) => (
-				<Link href={`/characters/${character.id}`} key={character.id}>
-					<div className={styles.card}>
-						<img src={character.image} alt={character.name} />
-						<p>{character.name}</p>
-					</div>
-				</Link>
+				<CharacterItem character={character} />
 			))}
 		</ul>
 	);
