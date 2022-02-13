@@ -6,7 +6,14 @@ export default function CharacterDetailsPage() {
 	const router = useRouter();
 	const characterId = parseInt(router.query.characterId);
 	const character = getCharacterById(characterId);
-	console.log({ character });
+
+	if (!character) {
+		return (
+			<h3 className={styles.description}>
+				No character with that ID was found. Please go back and try again.
+			</h3>
+		);
+	}
 
 	return (
 		<main className={styles.main}>
