@@ -14,6 +14,8 @@ export default function CharactersPage() {
 			birth_year: '19BBY',
 			gender: 'male',
 			homeworld: 'https://swapi.dev/api/planets/1/',
+			image:
+				'https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg',
 			films: [
 				'https://swapi.dev/api/films/1/',
 				'https://swapi.dev/api/films/2/',
@@ -44,6 +46,8 @@ export default function CharactersPage() {
 			birth_year: '112BBY',
 			gender: 'n/a',
 			homeworld: 'https://swapi.dev/api/planets/1/',
+			image:
+				'https://vignette.wikia.nocookie.net/starwars/images/3/3f/C-3PO_TLJ_Card_Trader_Award_Card.png',
 			films: [
 				'https://swapi.dev/api/films/1/',
 				'https://swapi.dev/api/films/2/',
@@ -70,6 +74,8 @@ export default function CharactersPage() {
 			birth_year: '33BBY',
 			gender: 'n/a',
 			homeworld: 'https://swapi.dev/api/planets/8/',
+			image:
+				'https://vignette.wikia.nocookie.net/starwars/images/e/eb/ArtooTFA2-Fathead.png',
 			films: [
 				'https://swapi.dev/api/films/1/',
 				'https://swapi.dev/api/films/2/',
