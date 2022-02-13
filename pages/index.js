@@ -13,14 +13,17 @@ export default function HomePage() {
 			</Head>
 
 			<main className={styles.main}>
-				<h1 className={styles.title}>Star Wars Meet & Greet</h1>
-				<div>
+				<h1 className={styles.title}>Welcome to Star Wars Meet & Greet!</h1>
+				<div className={styles.container}>
+					<img
+						className={styles.heroImage}
+						src='../images/hero_image.jpg'
+						alt='Darth Vader coffee meme'
+					/>
 					<h2>
-						Welcome to your one-stop-shop for learning all about your favorite
-						Star Wars characters and more!
+						Your one-stop-shop for learning all about your favorite Star Wars
+						characters and more!
 					</h2>
-				</div>
-				<div className={styles.cardContainer}>
 					<Link href='/characters'>
 						<h2 className={styles.card}>Characters List</h2>
 					</Link>

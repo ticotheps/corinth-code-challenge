@@ -7,6 +7,11 @@
 	align-items: center;
 }
 
+.container img {
+	max-width: 25vw;
+	margin: 3rem;
+}
+
 .cardContainer {
 	padding: 0 2rem;
 	flex: 1;
