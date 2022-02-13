@@ -85,3 +85,7 @@ const DUMMY_CHARACTERS = [
 		url: 'https://swapi.dev/api/people/3/',
 	},
 ];
+
+export function getAllCharacters() {
+	return DUMMY_CHARACTERS;
+}
