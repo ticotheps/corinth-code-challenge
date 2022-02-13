@@ -7,7 +7,7 @@ export default function CharactersList(props) {
 	return (
 		<ul className={styles.cardContainer}>
 			{characters.map((character) => (
-				<CharacterItem character={character} />
+				<CharacterItem character={character} key={character.id} />
 			))}
 		</ul>
 	);
