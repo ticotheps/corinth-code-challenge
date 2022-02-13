@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../../styles/Characters.module.css';
+import styles from '../../styles/CharactersPage.module.css';
 
 export default function CharactersPage() {
 	const characters = [
