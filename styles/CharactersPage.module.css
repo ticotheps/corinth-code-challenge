@@ -119,6 +119,11 @@
 	line-height: 1.5;
 }
 
+.card img {
+	max-width: 100%;
+	max-height: 25vh;
+}
+
 .logo {
 	height: 1em;
 	margin-left: 0.5rem;
