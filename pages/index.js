@@ -1,9 +1,16 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from '@nextui-org/react';
 import styles from '../styles/HomePage.module.css';
 
 export default function HomePage() {
+	const CharactersButton = () => (
+		<Button color='gradient' size='xl' ghost>
+			Characters
+		</Button>
+	);
+
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -24,9 +31,7 @@ export default function HomePage() {
 						Your one-stop-shop for learning all about your favorite Star Wars
 						characters and more!
 					</h2>
-					<Link href='/characters'>
-						<h2 className={styles.card}>Characters List</h2>
-					</Link>
+					<Link href='/characters'>{CharactersButton()}</Link>
 				</div>
 			</main>
 
