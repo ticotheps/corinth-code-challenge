@@ -1,11 +1,6 @@
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 export default function PageHead() {
-	const router = useRouter();
-	const query = router.query;
-	console.log(query);
-
 	return (
 		<Head>
 			<title>Lifeway IT | Tico Thepsourinthone</title>
