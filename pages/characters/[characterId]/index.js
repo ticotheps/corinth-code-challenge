@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
 	Container,
@@ -5,23 +6,29 @@ import {
 	Col,
 	Card,
 	Text,
-	Button,
 	Spacer,
+	Loading,
 } from '@nextui-org/react';
-import { getCharacterById } from '../../../dummy-data';
 
 export default function CharacterDetailsPage() {
 	const router = useRouter();
 	const characterId = parseInt(router.query.characterId);
-	const character = getCharacterById(characterId);
 
-	if (!character) {
-		return (
-			<Text h1>
-				No character with that ID was found. Please go back and try again.
-			</Text>
-		);
-	}
+	const [data, setData] = useState(null);
+	const [isLoading, setLoading] = useState(false);
+	useEffect(() => {
+		setLoading(true);
+		fetch(`https://swapi.dev/api/people/${characterId}`)
+			.then((res) => res.json())
+			.then((data) => {
+				setData(data);
+				setLoading(false);
+			});
+	}, []);
+
+	if (isLoading) return <Loading size='xl' type='points' />;
+	if (!data) return <Text h2>Something went wrong. Please try again.</Text>;
+	console.log({ data });
 
 	return (
 		<Container fluid>
@@ -35,7 +42,7 @@ export default function CharacterDetailsPage() {
 						}}
 						weight='bold'
 					>
-						{character.name}
+						{data.name}
 					</Text>
 				</Row>
 				<Spacer y={5} />
@@ -44,10 +51,10 @@ export default function CharacterDetailsPage() {
 						<Card css={{ mw: '500px' }}>
 							<Card.Body>
 								<Card.Image
-									src={`../../../${character.image}`}
+									src={`../../../${data.image}`}
 									height={400}
 									width='100%'
-									alt={character.name}
+									alt={data.name}
 								/>
 							</Card.Body>
 						</Card>
@@ -67,7 +74,7 @@ export default function CharacterDetailsPage() {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.height} cm
+									{data.height} cm
 								</Text>
 							</Col>
 						</Row>
@@ -85,7 +92,7 @@ export default function CharacterDetailsPage() {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.mass} kg
+									{data.mass} kg
 								</Text>
 							</Col>
 						</Row>
@@ -103,7 +110,7 @@ export default function CharacterDetailsPage() {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.hair_color}
+									{data.hair_color}
 								</Text>
 							</Col>
 						</Row>
@@ -121,7 +128,7 @@ export default function CharacterDetailsPage() {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.skin_color}
+									{data.skin_color}
 								</Text>
 							</Col>
 						</Row>
@@ -139,7 +146,7 @@ export default function CharacterDetailsPage() {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.eye_color}
+									{data.eye_color}
 								</Text>
 							</Col>
 						</Row>
@@ -157,7 +164,7 @@ export default function CharacterDetailsPage() {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.birth_year}
+									{data.birth_year}
 								</Text>
 							</Col>
 						</Row>
