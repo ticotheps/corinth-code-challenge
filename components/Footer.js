@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { Row, Text, Spacer } from '@nextui-org/react';
+// import Link from 'next/link';
+import { Row, Text, Spacer, Link } from '@nextui-org/react';
 
 export default function Footer() {
 	return (

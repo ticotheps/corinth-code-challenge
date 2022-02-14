@@ -13,7 +13,6 @@ export default function CharacterItem(props) {
 	const { image, name, url } = props.character;
 	let numberPattern = /\d+/g;
 	const matchedNumber = url.match(numberPattern);
-	// console.log({ matchedNumber });
 	const character_id = parseInt(matchedNumber[0]);
 	console.log({ character_id });
 	const characterDetailsPageLink = `/characters/${character_id}`;

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {
 	Container,
 	Row,
@@ -7,6 +6,7 @@ import {
 	Text,
 	Button,
 	Spacer,
+	Link,
 } from '@nextui-org/react';
 
 export default function HomePage() {
