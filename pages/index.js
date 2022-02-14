@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import {
 	Container,
@@ -9,7 +8,6 @@ import {
 	Button,
 	Spacer,
 } from '@nextui-org/react';
-import Footer from '../components/Footer';
 
 export default function HomePage() {
 	const charactersButton = () => (
@@ -65,7 +63,6 @@ export default function HomePage() {
 					<Link href='/characters'>{charactersButton()}</Link>
 				</Row>
 			</Col>
-			<Footer />
 		</Container>
 	);
 }
