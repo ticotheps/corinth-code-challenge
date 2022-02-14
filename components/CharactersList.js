@@ -1,14 +1,16 @@
 import CharacterItem from './CharacterItem';
-import styles from '../styles/CharactersList.module.css';
+import { Grid } from '@nextui-org/react';
 
 export default function CharactersList(props) {
 	const { characters } = props;
 
 	return (
-		<ul className={styles.cardContainer}>
+		<Grid.Container gap={2} justify='center'>
 			{characters.map((character) => (
-				<CharacterItem character={character} key={character.id} />
+				<Grid xs key={character.id}>
+					<CharacterItem character={character} key={character.id} />
+				</Grid>
 			))}
-		</ul>
+		</Grid.Container>
 	);
 }
