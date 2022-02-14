@@ -1,5 +1,13 @@
-import Link from 'next/link';
-import { Grid, Card, Row, Col, Text, Button, Spacer } from '@nextui-org/react';
+import {
+	Grid,
+	Card,
+	Row,
+	Col,
+	Text,
+	Button,
+	Spacer,
+	Link,
+} from '@nextui-org/react';
 
 export default function CharacterItem(props) {
 	const { image, name, url } = props.character;
