@@ -10,6 +10,7 @@ import {
 	Button,
 	Spacer,
 } from '@nextui-org/react';
+import Footer from '../components/Footer';
 
 export default function HomePage() {
 	const charactersButton = () => (
@@ -71,14 +72,7 @@ export default function HomePage() {
 					<Link href='/characters'>{charactersButton()}</Link>
 				</Row>
 			</Col>
-			<Row justify='center' align='center'>
-				<Spacer y={20} />
-				<Text b>Powered by</Text>
-				<Spacer x={0.5} />
-				<Link href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'>
-					<Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-				</Link>
-			</Row>
+			<Footer />
 		</Container>
 	);
 }
