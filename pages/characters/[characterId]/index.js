@@ -51,10 +51,10 @@ export default function CharacterDetailsPage() {
 						<Card css={{ mw: '500px' }}>
 							<Card.Body>
 								<Card.Image
-									src={`../../../${data.image}`}
+									src='../images/yoda_unavailable.jpg'
 									height={400}
 									width='100%'
-									alt={data.name}
+									alt='Meme of Yoda apologizing that this image is unavailble'
 								/>
 							</Card.Body>
 						</Card>
