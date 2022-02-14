@@ -48,7 +48,7 @@ export default function HomePage() {
 				<Row justify='center' align='center'>
 					<Text
 						h2
-						size='2.5rem'
+						size='2rem'
 						css={{
 							textGradient: '45deg, $purple500 -20%, $pink500 100%',
 						}}
