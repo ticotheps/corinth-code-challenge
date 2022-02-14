@@ -12,8 +12,8 @@ export default function CharacterItem(props) {
 
 	const characterCard = () => (
 		<Grid xs={4}>
-			<Card hoverable css={{ minWidth: '400px' }}>
-				<Card.Body>
+			<Card hoverable css={{ minWidth: '300px' }}>
+				{/* <Card.Body>
 					<Card.Image
 						objectFit='cover'
 						src={image}
@@ -21,7 +21,7 @@ export default function CharacterItem(props) {
 						height={350}
 						alt={name}
 					/>
-				</Card.Body>
+				</Card.Body> */}
 				<Col>
 					<Spacer y={1} />
 					<Row justify='center' align='center'>
