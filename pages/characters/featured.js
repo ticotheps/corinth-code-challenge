@@ -1,4 +1,12 @@
-import { Container, Grid, Row, Text, Spacer } from '@nextui-org/react';
+import {
+	Container,
+	Grid,
+	Row,
+	Text,
+	Spacer,
+	Link,
+	Button,
+} from '@nextui-org/react';
 import CharactersList from '../../components/CharactersList';
 
 export default function FeaturedCharactersPage() {
@@ -21,6 +29,14 @@ export default function FeaturedCharactersPage() {
 			<Grid.Container gap={2} justify='center'>
 				<CharactersList />
 			</Grid.Container>
+			<Spacer y={2} />
+			<Row justify='center' align='center'>
+				<Link href='/characters/search'>
+					<Button color='gradient' size='xl' ghost rounded>
+						Search All Characters
+					</Button>
+				</Link>
+			</Row>
 		</Container>
 	);
 }
