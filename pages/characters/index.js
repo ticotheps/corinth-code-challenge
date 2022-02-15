@@ -32,11 +32,11 @@ export default function FeaturedCharactersPage() {
 			<Grid.Container gap={2} justify='center'>
 				<CharactersList />
 			</Grid.Container>
-			<Spacer y={2} />
+			<Spacer y={5} />
 			<Row justify='center' align='center'>
 				<Link href='/characters/search'>
 					<Button color='gradient' size='xl' ghost rounded>
-						Search Characters
+						Search All Characters
 					</Button>
 				</Link>
 			</Row>
