@@ -12,7 +12,9 @@ import CharacterProfile from '../components/CharacterProfile';
 
 export default function CharacterItem(props) {
 	const { character } = props;
-	const propsCharacterId = parseInt(props.characterId);
+	const propsCharacterUrl = character.url;
+	const characterIdArray = propsCharacterUrl.match(/([\d]+)/g)[0];
+	const characterId = characterIdArray[0];
 
 	const characterCard = () => (
 		<Grid xs={3}>
@@ -25,7 +27,7 @@ export default function CharacterItem(props) {
 					<Spacer y={1} />
 					<Row justify='center' align='center'>
 						<Button color='gradient' rounded auto>
-							<Link href={`/characters/${propsCharacterId}`}>
+							<Link href={`/characters/${characterId}`}>
 								<Text
 									css={{ color: 'white' }}
 									size={12}
@@ -34,10 +36,10 @@ export default function CharacterItem(props) {
 								>
 									Learn More
 								</Text>
+								{/* <div style={{ display: 'none' }}>
+									<CharacterProfile character={character} />
+								</div> */}
 							</Link>
-							<div style={{ display: 'none' }}>
-								<CharacterProfile characterName={character.name} />
-							</div>
 						</Button>
 					</Row>
 					<Spacer y={1} />

@@ -54,23 +54,25 @@ export default function SearchCharactersPage() {
 				</Row>
 				<Spacer y={3} />
 				<Row justify='center' align='center'>
-					<Input
-						type='text'
-						value={query}
-						width='70vw'
-						clearable
-						onChange={(e) => onChangeHandler(e)}
-						contentRightStyling={false}
-						placeholder='Type character name here...'
-						contentRight={
-							<Button
-								auto
-								color='gradient'
-								icon={<Search fill='currentColor' />}
-								onClick={(e) => onClickHandler(e)}
-							/>
-						}
-					/>
+					<form>
+						<Input
+							type='text'
+							value={query}
+							width='70vw'
+							clearable
+							onChange={(e) => onChangeHandler(e)}
+							contentRightStyling={false}
+							placeholder='Type character name here...'
+							contentRight={
+								<Button
+									auto
+									color='gradient'
+									icon={<Search fill='currentColor' />}
+									onClick={(e) => onClickHandler(e)}
+								/>
+							}
+						/>
+					</form>
 				</Row>
 				<Spacer y={5} />
 				<Row justify='center' align='center'>

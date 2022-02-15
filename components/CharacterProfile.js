@@ -14,7 +14,7 @@ export default function CharacterProfile(props) {
 	const router = useRouter();
 	const characterId = router.query.characterId;
 
-	console.log({ characterId });
+	// console.log({ characterId });
 
 	const [data, setData] = useState(null);
 	const [isLoading, setLoading] = useState(false);
