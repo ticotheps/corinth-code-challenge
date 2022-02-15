@@ -1,10 +1,7 @@
-import { getAllCharacters } from '../../dummy-data.js';
-import { Container, Grid, Row, Text, Spacer } from '@nextui-org/react';
+import { Container, Grid, Row, Text, Spacer, Button } from '@nextui-org/react';
 import CharactersList from '../../components/CharactersList';
 
 export default function CharactersPage() {
-	const characters = getAllCharacters();
-
 	return (
 		<Container fluid>
 			<Spacer y={3} />
@@ -22,7 +19,14 @@ export default function CharactersPage() {
 			</Row>
 			<Spacer y={4} />
 			<Grid.Container gap={2} justify='center'>
-				<CharactersList characters={characters} />
+				<CharactersList />
+			</Grid.Container>
+			<Grid.Container gap={2} justify='center'>
+				<Grid>
+					<Button disabled color='gradient' auto>
+						See More
+					</Button>
+				</Grid>
 			</Grid.Container>
 		</Container>
 	);
