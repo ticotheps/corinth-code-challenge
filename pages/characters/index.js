@@ -1,33 +1,45 @@
-import { Container, Grid, Row, Text, Spacer, Button } from '@nextui-org/react';
+import {
+	Container,
+	Grid,
+	Col,
+	Row,
+	Text,
+	Spacer,
+	Link,
+	Button,
+} from '@nextui-org/react';
 import CharactersList from '../../components/CharactersList';
 
-export default function CharactersPage() {
+export default function FeaturedCharactersPage() {
 	return (
 		<Container fluid>
 			<Spacer y={3} />
 			<Row justify='center' align='center'>
-				<Text
-					h1
-					size='4em'
-					css={{
-						textGradient: '45deg, $blue500 -20%, $pink500 50%',
-					}}
-					weight='bold'
-				>
-					Star Wars Characters
-				</Text>
+				<Col align='center'>
+					<Text
+						h1
+						size='3.5em'
+						css={{
+							textGradient: '45deg, $blue500 -20%, $pink500 50%',
+						}}
+						weight='bold'
+					>
+						Featured Characters
+					</Text>
+				</Col>
 			</Row>
-			<Spacer y={4} />
+			<Spacer y={2} />
 			<Grid.Container gap={2} justify='center'>
 				<CharactersList />
 			</Grid.Container>
-			<Grid.Container gap={2} justify='center'>
-				<Grid>
-					<Button disabled color='gradient' auto>
-						See More
+			<Spacer y={2} />
+			<Row justify='center' align='center'>
+				<Link href='/characters/search'>
+					<Button color='gradient' size='xl' ghost rounded>
+						Search Characters
 					</Button>
-				</Grid>
-			</Grid.Container>
+				</Link>
+			</Row>
 		</Container>
 	);
 }
