@@ -8,38 +8,26 @@ import {
 	Spacer,
 	Link,
 } from '@nextui-org/react';
+import CharacterProfile from '../components/CharacterProfile';
 
 export default function CharacterItem(props) {
-	const { image, name, url } = props.character;
-	let numberPattern = /\d+/g;
-	const matchedNumber = url.match(numberPattern);
-	const character_id = parseInt(matchedNumber[0]);
-	console.log({ character_id });
-	const characterDetailsPageLink = `/characters/${character_id}`;
+	const { character } = props;
+	const propsCharacterId = parseInt(props.characterId);
 
 	const characterCard = () => (
-		<Grid xs={4}>
-			<Card hoverable css={{ minWidth: '300px' }}>
-				{/* <Card.Body>
-					<Card.Image
-						objectFit='cover'
-						src={image}
-						width='100%'
-						height={350}
-						alt={name}
-					/>
-				</Card.Body> */}
+		<Grid xs={3}>
+			<Card hoverable css={{ minWidth: '250px' }}>
 				<Col>
 					<Spacer y={1} />
 					<Row justify='center' align='center'>
-						<Text h3>{name}</Text>
+						<Text h3>{character.name}</Text>
 					</Row>
 					<Spacer y={1} />
 					<Row justify='center' align='center'>
-						<Button color='gradient' rounded auto ghost>
-							<Link href={characterDetailsPageLink}>
+						<Button color='gradient' rounded auto>
+							<Link href={`/characters/${propsCharacterId}`}>
 								<Text
-									css={{ color: 'inherit' }}
+									css={{ color: 'white' }}
 									size={12}
 									weight='bold'
 									transform='uppercase'
@@ -47,6 +35,9 @@ export default function CharacterItem(props) {
 									Learn More
 								</Text>
 							</Link>
+							<div style={{ display: 'none' }}>
+								<CharacterProfile characterName={character.name} />
+							</div>
 						</Button>
 					</Row>
 					<Spacer y={1} />
