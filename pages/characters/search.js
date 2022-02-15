@@ -71,11 +71,11 @@ export default function SearchCharactersPage() {
 					}
 				/>
 			</Row>
-			<Spacer y={3} />
+			<Spacer y={5} />
 			<Row justify='center' align='center'>
-				<Link href='/characters/featured'>
+				<Link href='/characters'>
 					<Button color='gradient' size='xl' ghost rounded>
-						See Featured Characters
+						View Featured Characters
 					</Button>
 				</Link>
 			</Row>
