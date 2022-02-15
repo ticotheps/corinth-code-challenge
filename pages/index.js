@@ -56,7 +56,7 @@ export default function HomePage() {
 				<Row justify='center' align='center'>
 					<Link href='/characters'>
 						<Button color='gradient' size='xl' ghost rounded>
-							Featured Characters
+							Meet Characters
 						</Button>
 					</Link>
 				</Row>
