@@ -1,16 +1,17 @@
 import Image from 'next/image';
-// import Link from 'next/link';
-import { Row, Text, Spacer, Link } from '@nextui-org/react';
+import { Col, Text, Spacer, Link } from '@nextui-org/react';
 
 export default function Footer() {
 	return (
-		<Row justify='center' align='center'>
-			<Spacer y={20} />
-			<Text b>Powered by</Text>
-			<Spacer x={0.25} />
-			<Link href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'>
-				<Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-			</Link>
-		</Row>
+		<Col align='center'>
+			<Spacer y={7} />
+			<Text>
+				Powered by{' '}
+				<Link href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'>
+					<Image src='/vercel.svg' alt='Vercel Logo' width={60} height={12} />
+				</Link>
+			</Text>
+			<Spacer y={1} />
+		</Col>
 	);
 }
