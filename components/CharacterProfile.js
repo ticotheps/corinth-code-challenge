@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import {
 	Container,
 	Row,
@@ -11,16 +11,16 @@ import {
 } from '@nextui-org/react';
 
 export default function CharacterProfile(props) {
-	// const router = useRouter();
-	// const characterId = parseInt(router.query.characterId);
+	const router = useRouter();
+	const characterId = router.query.characterId;
 
-	// console.log({ props });
+	console.log({ characterId });
 
 	const [data, setData] = useState(null);
 	const [isLoading, setLoading] = useState(false);
 	useEffect(() => {
 		setLoading(true);
-		fetch(`https://swapi.dev/api/people/?search=${props.characterName}`)
+		fetch(`https://swapi.dev/api/people/1/`)
 			.then((res) => res.json())
 			.then((data) => {
 				setData(data);
@@ -28,12 +28,10 @@ export default function CharacterProfile(props) {
 			});
 	}, []);
 
+	// console.log({ data });
+
 	if (isLoading) return <Loading size='xl' type='points' />;
 	if (!data) return <Text h2>Something went wrong. Please try again.</Text>;
-	// const { name, height, mass, hair_color, skin_color, eye_color, birth_year } =
-	// 	props.data.character;
-
-	// console.log({ data });
 
 	return (
 		<Container fluid>
@@ -47,7 +45,7 @@ export default function CharacterProfile(props) {
 						}}
 						weight='bold'
 					>
-						NAME
+						{data.name}
 					</Text>
 				</Row>
 				<Spacer y={5} />
@@ -79,7 +77,7 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									height cm
+									{data.height} cm
 								</Text>
 							</Col>
 						</Row>
@@ -97,7 +95,7 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									mass kg
+									{data.mass} kg
 								</Text>
 							</Col>
 						</Row>
@@ -115,7 +113,7 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									hair_color
+									{data.hair_color}
 								</Text>
 							</Col>
 						</Row>
@@ -133,7 +131,7 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									skin_color
+									{data.skin_color}
 								</Text>
 							</Col>
 						</Row>
@@ -151,7 +149,7 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									eye_color
+									{data.eye_color}
 								</Text>
 							</Col>
 						</Row>
@@ -169,7 +167,7 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									birth_year
+									{data.birth_year}
 								</Text>
 							</Col>
 						</Row>
