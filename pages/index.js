@@ -16,7 +16,7 @@ export default function HomePage() {
 				<Row justify='center' align='center'>
 					<Text
 						h1
-						size='5em'
+						size='3.5em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
 						}}
@@ -25,7 +25,7 @@ export default function HomePage() {
 						Welcome to Star Wars Meet & Greet!
 					</Text>
 				</Row>
-				<Spacer y={4} />
+				<Spacer y={3} />
 				<Row justify='center' align='center'>
 					<Card css={{ mw: '500px' }}>
 						<Card.Body>
@@ -48,7 +48,7 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Your one-stop-shop for learning more about your favorite Star Wars
+						The 'one-stop-shop' for learning more about your favorite Star Wars
 						characters!
 					</Text>
 				</Row>
