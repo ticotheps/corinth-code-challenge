@@ -54,9 +54,9 @@ export default function HomePage() {
 				</Row>
 				<Spacer y={3} />
 				<Row justify='center' align='center'>
-					<Link href='/characters'>
+					<Link href='/characters/featured'>
 						<Button color='gradient' size='xl' ghost rounded>
-							Meet Characters
+							Featured Characters
 						</Button>
 					</Link>
 				</Row>
