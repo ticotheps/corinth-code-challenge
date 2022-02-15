@@ -4,7 +4,7 @@ import {
 	Container,
 	Input,
 	Link,
-	Grid,
+	Col,
 	Row,
 	Text,
 	Spacer,
@@ -39,46 +39,49 @@ export default function SearchCharactersPage() {
 	return (
 		<Container fluid>
 			<Spacer y={3} />
-			<Row justify='center' align='center'>
-				<Text
-					h1
-					size='4em'
-					css={{
-						textGradient: '45deg, $blue500 -20%, $pink500 50%',
-					}}
-					weight='bold'
-				>
-					Star Wars Characters
-				</Text>
-			</Row>
-			<Spacer y={3} />
-			<Row justify='center' align='center'>
-				<Input
-					type='text'
-					value={query}
-					width='70vw'
-					clearable
-					onChange={(e) => onChangeHandler(e)}
-					contentRightStyling={false}
-					placeholder='Type character name here...'
-					contentRight={
-						<Button
-							auto
-							color='gradient'
-							icon={<Search fill='currentColor' />}
-							onClick={(e) => onClickHandler(e)}
-						/>
-					}
-				/>
-			</Row>
-			<Spacer y={5} />
-			<Row justify='center' align='center'>
-				<Link href='/characters'>
-					<Button color='gradient' size='xl' ghost rounded>
-						View Featured Characters
-					</Button>
-				</Link>
-			</Row>
+			<Col align='center'>
+				<Row justify='center' align='center'>
+					<Text
+						h1
+						size='4em'
+						css={{
+							textGradient: '45deg, $blue500 -20%, $pink500 50%',
+						}}
+						weight='bold'
+					>
+						Star Wars Characters
+					</Text>
+				</Row>
+				<Spacer y={3} />
+				<Row justify='center' align='center'>
+					<Input
+						type='text'
+						value={query}
+						width='70vw'
+						clearable
+						onChange={(e) => onChangeHandler(e)}
+						contentRightStyling={false}
+						placeholder='Type character name here...'
+						contentRight={
+							<Button
+								auto
+								color='gradient'
+								icon={<Search fill='currentColor' />}
+								onClick={(e) => onClickHandler(e)}
+							/>
+						}
+					/>
+				</Row>
+				<Spacer y={5} />
+				<Row justify='center' align='center'>
+					<Link href='/characters'>
+						<Button color='gradient' size='xl' ghost auto rounded>
+							View Featured Characters
+						</Button>
+					</Link>
+				</Row>
+				<Spacer y={5} />
+			</Col>
 		</Container>
 	);
 }

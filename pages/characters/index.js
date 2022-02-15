@@ -1,4 +1,5 @@
 import {
+	Card,
 	Container,
 	Grid,
 	Col,
@@ -35,7 +36,7 @@ export default function FeaturedCharactersPage() {
 			<Spacer y={5} />
 			<Row justify='center' align='center'>
 				<Link href='/characters/search'>
-					<Button color='gradient' size='xl' ghost rounded>
+					<Button color='gradient' size='xl' ghost auto rounded>
 						Search All Characters
 					</Button>
 				</Link>
