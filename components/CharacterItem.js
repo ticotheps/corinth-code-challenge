@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
 	Grid,
 	Card,
@@ -10,11 +11,69 @@ import {
 } from '@nextui-org/react';
 import CharacterProfile from '../components/CharacterProfile';
 
+function useLocalStorage(key, initialValue) {
+	// state to store our value
+	// pass initial state function useState() so logic is only executed once
+	const [storedValue, setStoredValue] = useState(() => {
+		if (typeof window === 'undefined') {
+			return initialValue;
+		}
+
+		try {
+			// retrieves item from local storage by key
+			const item = window.localStorage.getItem(key);
+			// parses stored JSON or returns initial value if null
+			return item ? JSON.parse(item) : initialValue;
+		} catch (error) {
+			console.log({ error });
+			return initialValue;
+		}
+	});
+
+	const setValue = (value) => {
+		try {
+			// allows value to be a function so we have same API as useState()
+			const valueToStore =
+				value instanceof Function ? value(storedValue) : value;
+			// saves state
+			setStoredValue(valueToStore);
+			// saves to local storage
+			if (typeof window !== 'undefined') {
+				window.localStorage.setItem(key, JSON.stringify(valueToStore));
+			}
+		} catch (error) {
+			console.log({ error });
+		}
+	};
+	return [storedValue, setValue];
+}
+
 export default function CharacterItem(props) {
 	const { character } = props;
-	const propsCharacterUrl = character.url;
-	const characterIdArray = propsCharacterUrl.match(/([\d]+)/g)[0];
-	const characterId = characterIdArray[0];
+	// console.log('CharacterItem props = ', props);
+	// console.log({ character });
+	const characterUrl = character.url;
+	const characterId = characterUrl.match(/([\d]+)/g)[0];
+	// console.log({ characterUrl, characterId });
+
+	// saves character's properties into local storage
+	const [charId, setCharId] = useLocalStorage('charId', '');
+	const [charName, setCharName] = useLocalStorage('charName', '');
+	const [charHeight, setCharHeight] = useLocalStorage('charHeight', '');
+	const [charMass, setCharMass] = useLocalStorage('charMass', '');
+	const [charHairColor, setCharHairColor] = useLocalStorage(
+		'charHairColor',
+		''
+	);
+	const [charSkinColor, setCharSkinColor] = useLocalStorage(
+		'charSkinColor',
+		''
+	);
+	const [charEyeColor, setCharEyeColor] = useLocalStorage('charEyeColor', '');
+	const [charBirthYear, setCharBirthYear] = useLocalStorage(
+		'charBirthYear',
+		''
+	);
 
 	const characterCard = () => (
 		<Grid xs={3}>
@@ -26,8 +85,22 @@ export default function CharacterItem(props) {
 					</Row>
 					<Spacer y={1} />
 					<Row justify='center' align='center'>
-						<Button color='gradient' rounded auto>
-							<Link href={`/characters/${characterId}`}>
+						<Link href={`/characters/${characterId}`}>
+							<Button
+								color='gradient'
+								rounded
+								auto
+								onClick={(e) => {
+									setCharId(characterId);
+									setCharName(character.name);
+									setCharHeight(character.height);
+									setCharMass(character.mass);
+									setCharHairColor(character.hair_color);
+									setCharSkinColor(character.skin_color);
+									setCharEyeColor(character.eye_color);
+									setCharBirthYear(character.birth_year);
+								}}
+							>
 								<Text
 									css={{ color: 'white' }}
 									size={12}
@@ -36,11 +109,15 @@ export default function CharacterItem(props) {
 								>
 									Learn More
 								</Text>
-								{/* <div style={{ display: 'none' }}>
-									<CharacterProfile character={character} />
-								</div> */}
-							</Link>
-						</Button>
+								<div style={{ display: 'none' }}>
+									<CharacterProfile
+										character={character}
+										characterId={characterId}
+										name={character.name}
+									/>
+								</div>
+							</Button>
+						</Link>
 					</Row>
 					<Spacer y={1} />
 				</Col>
