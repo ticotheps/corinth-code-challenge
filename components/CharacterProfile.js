@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
 	Container,
+	Grid,
 	Row,
 	Col,
 	Card,
@@ -74,7 +75,7 @@ export default function CharacterProfile(props) {
 				<Row justify='center' align='center'>
 					<Text
 						h1
-						size='5em'
+						size='3.5em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
 						}}
@@ -83,31 +84,30 @@ export default function CharacterProfile(props) {
 						{charName}
 					</Text>
 				</Row>
-				<Spacer y={3} />
+				<Spacer y={1} />
 				<Row justify='center' align='center'>
-					<Col align='flex-start'>
-						<Card css={{ mw: '400px' }}>
-							<Card.Body>
+					<Grid.Container gap={2} justify='center' wrap='wrap'>
+						<Grid xs={10} sm={8} md={6} lg={4} xl={2}>
+							<Card cover>
 								<Card.Image
 									src='../images/yoda_unavailable.jpg'
-									height={400}
+									height='auto'
 									width='100%'
 									alt='Meme of Yoda apologizing that this image is unavailble'
 								/>
-							</Card.Body>
-						</Card>
-					</Col>
-					<Col align='flex-end'>
+							</Card>
+						</Grid>
 						<Row>
-							<Col>
-								<Text h4 size='2rem' weight='bold'>
+							<Col align='right'>
+								<Text h4 size='1.75rem' weight='bold'>
 									Height:
 								</Text>
 							</Col>
-							<Col>
+							<Spacer y={1} x={2} />
+							<Col align='left'>
 								<Text
 									h4
-									size='2rem'
+									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
@@ -117,15 +117,16 @@ export default function CharacterProfile(props) {
 							</Col>
 						</Row>
 						<Row>
-							<Col>
-								<Text h4 size='2rem' weight='bold'>
+							<Col align='right'>
+								<Text h4 size='1.75rem' weight='bold'>
 									Mass:
 								</Text>
 							</Col>
-							<Col>
+							<Spacer y={1} x={2} />
+							<Col align='left'>
 								<Text
 									h4
-									size='2rem'
+									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
@@ -135,15 +136,16 @@ export default function CharacterProfile(props) {
 							</Col>
 						</Row>
 						<Row>
-							<Col>
-								<Text h4 size='2rem' weight='bold'>
+							<Col align='right'>
+								<Text h4 size='1.75rem' weight='bold'>
 									Hair Color:
 								</Text>
 							</Col>
-							<Col>
+							<Spacer y={1} x={2} />
+							<Col align='left'>
 								<Text
 									h4
-									size='2rem'
+									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
@@ -153,15 +155,16 @@ export default function CharacterProfile(props) {
 							</Col>
 						</Row>
 						<Row>
-							<Col>
-								<Text h4 size='2rem' weight='bold'>
+							<Col align='right'>
+								<Text h4 size='1.75rem' weight='bold'>
 									Skin Color:
 								</Text>
 							</Col>
-							<Col>
+							<Spacer y={1} x={2} />
+							<Col align='left'>
 								<Text
 									h4
-									size='2rem'
+									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
@@ -171,15 +174,16 @@ export default function CharacterProfile(props) {
 							</Col>
 						</Row>
 						<Row>
-							<Col>
-								<Text h4 size='2rem' weight='bold'>
+							<Col align='right'>
+								<Text h4 size='1.75rem' weight='bold'>
 									Eye Color:
 								</Text>
 							</Col>
-							<Col>
+							<Spacer y={1} x={2} />
+							<Col align='left'>
 								<Text
 									h4
-									size='2rem'
+									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
@@ -189,15 +193,16 @@ export default function CharacterProfile(props) {
 							</Col>
 						</Row>
 						<Row>
-							<Col>
-								<Text h4 size='2rem' weight='bold'>
+							<Col align='right'>
+								<Text h4 size='1.75rem' weight='bold'>
 									Birth Year:
 								</Text>
 							</Col>
-							<Col>
+							<Spacer y={1} x={2} />
+							<Col align='left'>
 								<Text
 									h4
-									size='2rem'
+									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
@@ -206,7 +211,7 @@ export default function CharacterProfile(props) {
 								</Text>
 							</Col>
 						</Row>
-					</Col>
+					</Grid.Container>
 				</Row>
 			</Col>
 		</Container>
