@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import CharacterItem from './CharacterItem';
-import CharacterProfile from './CharacterProfile';
 import { Loading, Text, Row, Container } from '@nextui-org/react';
 
 export default function CharactersList() {
@@ -18,8 +17,6 @@ export default function CharactersList() {
 				setLoading(false);
 			});
 	}, []);
-
-	// console.log({ data });
 
 	if (isLoading) {
 		return (
@@ -47,9 +44,6 @@ export default function CharactersList() {
 			{data.results.map((character, index) => (
 				<div key={index}>
 					<CharacterItem character={character} />
-					{/* <div style={{ display: 'none' }}>
-						<CharacterProfile character={character} />
-					</div> */}
 				</div>
 			))}
 		</>

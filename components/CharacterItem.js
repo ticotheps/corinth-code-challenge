@@ -50,11 +50,8 @@ function useLocalStorage(key, initialValue) {
 
 export default function CharacterItem(props) {
 	const { character } = props;
-	// console.log('CharacterItem props = ', props);
-	// console.log({ character });
 	const characterUrl = character.url;
 	const characterId = characterUrl.match(/([\d]+)/g)[0];
-	// console.log({ characterUrl, characterId });
 
 	// saves character's properties into local storage
 	const [charId, setCharId] = useLocalStorage('charId', '');

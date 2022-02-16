@@ -11,8 +11,7 @@ import {
 } from '@nextui-org/react';
 
 function useLocalStorage(key, initialValue) {
-	// state to store our value
-	// pass initial state function useState() so logic is only executed once
+	// passes initial state to useState() so logic is only executed once
 	const [storedValue, setStoredValue] = useState(() => {
 		if (typeof window === 'undefined') {
 			return initialValue;
@@ -50,10 +49,7 @@ function useLocalStorage(key, initialValue) {
 export default function CharacterProfile(props) {
 	const router = useRouter();
 	const characterId = router.query.characterId;
-	// console.log('props.character = ', props.character);
-	// console.log('characterId = ', characterId);
-	// console.log('props.name = ', props.name);
-	// saves character's properties into local storage
+
 	const [charId, setCharId] = useLocalStorage('charId', '');
 	const [charName, setCharName] = useLocalStorage('charName', '');
 	const [charHeight, setCharHeight] = useLocalStorage('charHeight', '');
@@ -72,23 +68,6 @@ export default function CharacterProfile(props) {
 		''
 	);
 
-	// const [data, setData] = useState(null);
-	// const [isLoading, setLoading] = useState(false);
-	// useEffect(() => {
-	// 	setLoading(true);
-	// 	fetch(`https://swapi.dev/api/people/${props.characterId}/`)
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			setData(data);
-	// 			setLoading(false);
-	// 		});
-	// }, []);
-
-	// console.log({ data });
-
-	// if (isLoading) return <Loading size='xl' type='points' />;
-	// if (!data) return <Text h2>Something went wrong. Please try again.</Text>;
-
 	return (
 		<Container fluid>
 			<Col>
@@ -101,7 +80,6 @@ export default function CharacterProfile(props) {
 						}}
 						weight='bold'
 					>
-						{/* {data.name} */}
 						{charName}
 					</Text>
 				</Row>
@@ -134,7 +112,6 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {data.height} cm */}
 									{charHeight} cm
 								</Text>
 							</Col>
@@ -153,7 +130,6 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {data.mass} kg */}
 									{charMass} kg
 								</Text>
 							</Col>
@@ -172,7 +148,6 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {data.hair_color} */}
 									{charHairColor}
 								</Text>
 							</Col>
@@ -191,7 +166,6 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {data.skin_color} */}
 									{charSkinColor}
 								</Text>
 							</Col>
@@ -210,7 +184,6 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {data.eye_color} */}
 									{charEyeColor}
 								</Text>
 							</Col>
@@ -229,7 +202,6 @@ export default function CharacterProfile(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {data.birth_year} */}
 									{charBirthYear}
 								</Text>
 							</Col>
