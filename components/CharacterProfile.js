@@ -70,7 +70,7 @@ export default function CharacterProfile(props) {
 
 	return (
 		<Container fluid>
-			<Col>
+			<Col align='center'>
 				<Row justify='center' align='center'>
 					<Text
 						h1
@@ -83,10 +83,10 @@ export default function CharacterProfile(props) {
 						{charName}
 					</Text>
 				</Row>
-				<Spacer y={5} />
+				<Spacer y={3} />
 				<Row justify='center' align='center'>
-					<Col>
-						<Card css={{ mw: '500px' }}>
+					<Col align='flex-start'>
+						<Card css={{ mw: '400px' }}>
 							<Card.Body>
 								<Card.Image
 									src='../images/yoda_unavailable.jpg'
@@ -97,7 +97,7 @@ export default function CharacterProfile(props) {
 							</Card.Body>
 						</Card>
 					</Col>
-					<Col>
+					<Col align='flex-end'>
 						<Row>
 							<Col>
 								<Text h4 size='2rem' weight='bold'>
