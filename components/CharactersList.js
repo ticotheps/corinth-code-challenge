@@ -7,7 +7,7 @@ export default function CharactersList() {
 	const [data, setData] = useState(null);
 	const [isLoading, setLoading] = useState(false);
 
-	const featuredCharactersUrl = 'https://swapi.dev/api/people';
+	const featuredCharactersUrl = 'https://swapi.dev/api/people/';
 
 	useEffect(() => {
 		setLoading(true);
@@ -45,15 +45,11 @@ export default function CharactersList() {
 	return (
 		<>
 			{data.results.map((character, index) => (
-				<div>
-					<CharacterItem
-						character={character}
-						// characterId={index + 1}
-						key={index}
-					/>
-					<div style={{ display: 'none' }}>
+				<div key={index}>
+					<CharacterItem character={character} />
+					{/* <div style={{ display: 'none' }}>
 						<CharacterProfile character={character} />
-					</div>
+					</div> */}
 				</div>
 			))}
 		</>
