@@ -12,9 +12,9 @@ import {
 } from '@nextui-org/react';
 
 export default function CharacterProfilePage() {
-	const router = useRouter();
-	const characterId = router.query.id;
-	console.log({ characterId });
+	// const router = useRouter();
+	// const characterId = router.query.characterId;
+	// console.log({ characterId });
 
 	// const [data, setData] = useState(null);
 	// const [isLoading, setLoading] = useState(false);
