@@ -11,7 +11,7 @@ import {
 	Button,
 } from '@nextui-org/react';
 
-export default function CharacterSearchPage() {
+export default function SearchPage() {
 	const [query, setQuery] = useState('');
 	const [searchResults, setSearchResults] = useState([]);
 
