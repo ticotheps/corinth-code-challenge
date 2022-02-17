@@ -39,7 +39,7 @@ export default function CharactersPage(props) {
 				{/* <CharactersList people={people} />
 				 */}
 				{people.map((character, index) => (
-					<CharacterItem character={character} />
+					<CharacterItem character={character} key={index} />
 				))}
 			</Grid.Container>
 			<Spacer y={5} />
