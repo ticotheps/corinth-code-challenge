@@ -5,15 +5,13 @@ export default function Footer() {
 	return (
 		<Col align='center'>
 			<Spacer y={6} />
-			<Text>
-				<Row align='center' justify='center'>
-					<Text>Powered by</Text>
-					<Link href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'>
-						<Image src='/vercel.svg' alt='Vercel Logo' width={85} height={16} />
-					</Link>
-				</Row>
-				<Spacer y={2} />
-			</Text>
+			<Row align='center' justify='center'>
+				<Text>Powered by</Text>
+				<Link href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'>
+					<Image src='/vercel.svg' alt='Vercel Logo' width={85} height={16} />
+				</Link>
+			</Row>
+			<Spacer y={2} />
 		</Col>
 	);
 }
