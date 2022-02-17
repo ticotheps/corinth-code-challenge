@@ -9,7 +9,6 @@ import {
 	Spacer,
 	Link,
 } from '@nextui-org/react';
-import CharacterProfile from '../components/CharacterProfile';
 
 function useLocalStorage(key, initialValue) {
 	// state to store our value
@@ -51,6 +50,7 @@ function useLocalStorage(key, initialValue) {
 export default function CharacterItem(props) {
 	const { character } = props;
 	const characterUrl = character.url;
+	// finds a character's id in it's "url" property
 	const characterId = characterUrl.match(/([\d]+)/g)[0];
 
 	// saves character's properties into local storage
@@ -106,13 +106,6 @@ export default function CharacterItem(props) {
 								>
 									Learn More
 								</Text>
-								<div style={{ display: 'none' }}>
-									<CharacterProfile
-										character={character}
-										characterId={characterId}
-										name={character.name}
-									/>
-								</div>
 							</Button>
 						</Link>
 					</Row>
