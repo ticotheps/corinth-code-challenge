@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+// import path from 'path';
+// import fs from 'fs/promises';
+
 import { useRouter } from 'next/router';
+import useLocalStorage from '../../utils/hooks/useLocalStorage';
 import {
 	Container,
 	Grid,
@@ -11,46 +14,7 @@ import {
 	Loading,
 } from '@nextui-org/react';
 
-function useLocalStorage(key, initialValue) {
-	// passes initial state to useState() so logic is only executed once
-	const [storedValue, setStoredValue] = useState(() => {
-		if (typeof window === 'undefined') {
-			return initialValue;
-		}
-
-		try {
-			// retrieves item from local storage by key
-			const item = window.localStorage.getItem(key);
-			// parses stored JSON or returns initial value if null
-			return item ? JSON.parse(item) : initialValue;
-		} catch (error) {
-			console.log({ error });
-			return initialValue;
-		}
-	});
-
-	const setValue = (value) => {
-		try {
-			// allows value to be a function so we have same API as useState()
-			const valueToStore =
-				value instanceof Function ? value(storedValue) : value;
-			// saves state
-			setStoredValue(valueToStore);
-			// saves to local storage
-			if (typeof window !== 'undefined') {
-				window.localStorage.setItem(key, JSON.stringify(valueToStore));
-			}
-		} catch (error) {
-			console.log({ error });
-		}
-	};
-	return [storedValue, setValue];
-}
-
-export default function CharacterProfilePage() {
-	const router = useRouter();
-	const characterId = router.query.characterId;
-
+export default function CharacterProfilePage(props) {
 	const [charId, setCharId] = useLocalStorage('charId', '');
 	const [charName, setCharName] = useLocalStorage('charName', '');
 	const [charHeight, setCharHeight] = useLocalStorage('charHeight', '');
@@ -68,6 +32,12 @@ export default function CharacterProfilePage() {
 		'charBirthYear',
 		''
 	);
+
+	const router = useRouter();
+	const characterId = router.query.characterId;
+	console.log({ characterId });
+
+	// console.log('Profile Page - props = ', props);
 
 	return (
 		<Container fluid>
@@ -217,3 +187,34 @@ export default function CharacterProfilePage() {
 		</Container>
 	);
 }
+
+// export async function getStaticProps(context) {
+// 	const { params } = context;
+// 	const characterId = params.characterId;
+// 	console.log({ characterId });
+
+// 	const file_path = path.join(process.cwd(), 'data', 'mock_data.json');
+// 	const json_data = await fs.readFile(file_path);
+// 	const mock_data = JSON.parse(json_data);
+
+// 	const character = mock_data.people.find(
+// 		(character) => character.id === characterId
+// 	);
+
+// 	return {
+// 		props: {
+// 			loadedCharacter: character,
+// 		},
+// 	};
+// }
+
+// export async function getStaticPaths() {
+// 	return {
+// 		paths: [
+// 			{ params: { characterId: '1' } },
+// 			{ params: { characterId: '2' } },
+// 			{ params: { characterId: '3' } },
+// 		],
+// 		fallback: false,
+// 	};
+// }
