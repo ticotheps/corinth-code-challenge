@@ -57,6 +57,7 @@ export default function SearchPage() {
 					<form>
 						<Input
 							labelPlaceholder='Type the name of a favorite character'
+							aria-label='search for a Star Wars character'
 							type='text'
 							value={query}
 							width='70vw'
