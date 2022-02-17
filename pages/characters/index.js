@@ -1,3 +1,6 @@
+import path from 'path';
+import fs from 'fs/promises';
+
 import {
 	Container,
 	Grid,
@@ -8,9 +11,12 @@ import {
 	Link,
 	Button,
 } from '@nextui-org/react';
-import CharactersList from '../../components/CharactersList';
+import CharacterItem from '../../components/CharacterItem';
 
-export default function FeaturedCharactersPage() {
+export default function CharactersPage(props) {
+	const { people } = props;
+	// console.log({ people });
+
 	return (
 		<Container fluid>
 			<Spacer y={3} />
@@ -24,13 +30,17 @@ export default function FeaturedCharactersPage() {
 						}}
 						weight='bold'
 					>
-						Featured Characters
+						All Characters
 					</Text>
 				</Col>
 			</Row>
 			<Spacer y={2} />
 			<Grid.Container gap={2} justify='center'>
-				<CharactersList />
+				{/* <CharactersList people={people} />
+				 */}
+				{people.map((character, index) => (
+					<CharacterItem character={character} />
+				))}
 			</Grid.Container>
 			<Spacer y={5} />
 			<Row justify='center' align='center'>
@@ -42,4 +52,16 @@ export default function FeaturedCharactersPage() {
 			</Row>
 		</Container>
 	);
+}
+
+export async function getStaticProps() {
+	const file_path = path.join(process.cwd(), 'data', 'mock_data.json');
+	const json_data = await fs.readFile(file_path);
+	const mock_data = JSON.parse(json_data);
+
+	return {
+		props: {
+			people: mock_data.people,
+		},
+	};
 }
