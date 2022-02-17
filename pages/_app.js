@@ -1,16 +1,13 @@
-import PageHead from '../components/PageHead';
-import Footer from '../components/Footer';
+import Layout from '../components/Layout';
 import { NextUIProvider } from '@nextui-org/react';
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
 	return (
 		<NextUIProvider>
-			<PageHead />
-			<Component {...pageProps} />
-			<Footer />
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
 		</NextUIProvider>
 	);
 }
-
-export default MyApp;
