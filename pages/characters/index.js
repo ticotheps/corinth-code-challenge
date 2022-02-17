@@ -15,7 +15,6 @@ import CharacterItem from '../../components/CharacterItem';
 
 export default function CharactersPage(props) {
 	const { people } = props;
-	// console.log({ people });
 
 	return (
 		<Container fluid>
@@ -36,8 +35,6 @@ export default function CharactersPage(props) {
 			</Row>
 			<Spacer y={2} />
 			<Grid.Container gap={2} justify='center'>
-				{/* <CharactersList people={people} />
-				 */}
 				{people.map((character, index) => (
 					<CharacterItem character={character} key={index} />
 				))}
