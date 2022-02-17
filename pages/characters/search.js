@@ -56,13 +56,13 @@ export default function SearchPage() {
 				<Row justify='center' align='center'>
 					<form>
 						<Input
+							labelPlaceholder='Type the name of a favorite character'
 							type='text'
 							value={query}
 							width='70vw'
 							clearable
 							onChange={(e) => onChangeHandler(e)}
 							contentRightStyling={false}
-							placeholder='Type character name here...'
 							contentRight={
 								<Button
 									auto
