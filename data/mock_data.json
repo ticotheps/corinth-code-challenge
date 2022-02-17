@@ -1,5 +1,5 @@
 {
-	"mock_data": [
+	"people": [
 		{
 			"name": "Luke Skywalker",
 			"height": "172",
