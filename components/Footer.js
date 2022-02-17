@@ -11,6 +11,10 @@ export default function Footer() {
 					<Image src='/vercel.svg' alt='Vercel Logo' width={85} height={16} />
 				</Link>
 			</Row>
+			<Spacer y={1} />
+			<Row align='center' justify='center'>
+				Copyright &#169; 2022 Thumb Technology Consulting LLC
+			</Row>
 			<Spacer y={2} />
 		</Col>
 	);
