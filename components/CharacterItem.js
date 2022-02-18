@@ -14,11 +14,8 @@ import useLocalStorage from '../utils/hooks/useLocalStorage';
 export default function CharacterItem(props) {
 	const { character } = props;
 	const characterUrl = character.url;
-	const urlArr = characterUrl.split('/');
-	const characterId = urlArr.slice(-2)[0];
-	// console.log({ characterUrl, urlArr, characterId });
-	// finds a character's id in it's "url" property
-	// const characterId = characterUrl.match(/([\d]+)/g)[0];
+	const characterId = characterUrl.split('/').slice(-2)[0];
+	// console.log({ characterUrl, characterId });
 
 	// saves character's properties into local storage
 	const [charId, setCharId] = useLocalStorage('charId', '');
