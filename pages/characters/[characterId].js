@@ -1,8 +1,5 @@
 import path from 'path';
 import fs from 'fs/promises';
-
-// import { useRouter } from 'next/router';
-// import useLocalStorage from '../../utils/hooks/useLocalStorage';
 import {
 	Container,
 	Grid,
@@ -11,36 +8,10 @@ import {
 	Card,
 	Text,
 	Spacer,
-	Loading,
 } from '@nextui-org/react';
 
 export default function CharacterProfilePage(props) {
-	// const [charId, setCharId] = useLocalStorage('charId', '');
-	// const [charName, setCharName] = useLocalStorage('charName', '');
-	// const [charHeight, setCharHeight] = useLocalStorage('charHeight', '');
-	// const [charMass, setCharMass] = useLocalStorage('charMass', '');
-	// const [charHairColor, setCharHairColor] = useLocalStorage(
-	// 	'charHairColor',
-	// 	''
-	// );
-	// const [charSkinColor, setCharSkinColor] = useLocalStorage(
-	// 	'charSkinColor',
-	// 	''
-	// );
-	// const [charEyeColor, setCharEyeColor] = useLocalStorage('charEyeColor', '');
-	// const [charBirthYear, setCharBirthYear] = useLocalStorage(
-	// 	'charBirthYear',
-	// 	''
-	// );
-
-	// const router = useRouter();
-	// const characterId = router.query.characterId;
-	// console.log({ characterId });
-
-	const staticPropsCharacter = props.character;
-	// console.log({ staticPropsCharacter });
-
-	// console.log('Profile Page - props = ', props);
+	const { character } = props;
 
 	return (
 		<Container fluid>
@@ -54,8 +25,7 @@ export default function CharacterProfilePage(props) {
 						}}
 						weight='bold'
 					>
-						{/* {charName} */}
-						{staticPropsCharacter.name}
+						{character.name}
 					</Text>
 				</Row>
 				<Spacer y={1} />
@@ -86,8 +56,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {charHeight} cm */}
-									{staticPropsCharacter.height} cm
+									{character.height} cm
 								</Text>
 							</Col>
 						</Row>
@@ -106,8 +75,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {charMass} kg */}
-									{staticPropsCharacter.mass} kg
+									{character.mass} kg
 								</Text>
 							</Col>
 						</Row>
@@ -126,8 +94,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {charHairColor} */}
-									{staticPropsCharacter.hair_color}
+									{character.hair_color}
 								</Text>
 							</Col>
 						</Row>
@@ -146,8 +113,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {charSkinColor} */}
-									{staticPropsCharacter.skin_color}
+									{character.skin_color}
 								</Text>
 							</Col>
 						</Row>
@@ -166,8 +132,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {charEyeColor} */}
-									{staticPropsCharacter.eye_color}
+									{character.eye_color}
 								</Text>
 							</Col>
 						</Row>
@@ -186,8 +151,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{/* {charBirthYear} */}
-									{staticPropsCharacter.birth_year}
+									{character.birth_year}
 								</Text>
 							</Col>
 						</Row>
@@ -211,7 +175,6 @@ export async function getStaticProps(context) {
 	const matchedCharacter = mock_data.people.find((character) => {
 		const storedCharId = character.url.split('/').slice(-2)[0];
 		return storedCharId === characterId;
-		// character.url.split('/people/')[1].match(/^d*/) === characterId;
 	});
 
 	return {
