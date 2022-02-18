@@ -13,7 +13,9 @@ export default function Footer() {
 			</Row>
 			<Spacer y={1} />
 			<Row align='center' justify='center'>
-				Copyright &#169; 2022 Thumb Technology Consulting LLC
+				<Text p size='0.75rem'>
+					Copyright &#169; 2022 Thumb Technology Consulting LLC
+				</Text>
 			</Row>
 			<Spacer y={2} />
 		</Col>
