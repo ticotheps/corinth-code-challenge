@@ -56,7 +56,7 @@ export default function HomePage() {
 				<Row justify='center' align='center'>
 					<Link href='/characters'>
 						<Button color='gradient' size='xl' ghost rounded>
-							See All Characters
+							View All Characters
 						</Button>
 					</Link>
 				</Row>
@@ -64,7 +64,7 @@ export default function HomePage() {
 				<Row justify='center' align='center'>
 					<Link href='/characters/search'>
 						<Button color='gradient' size='xl' ghost rounded>
-							Search Characters
+							Search By Character Name
 						</Button>
 					</Link>
 				</Row>
