@@ -56,8 +56,10 @@ export default function SearchPage() {
 				<Row justify='center' align='center'>
 					<form>
 						<Input
-							labelPlaceholder='Search by character name...'
-							aria-label='search for a Star Wars character'
+							// id='react-aria-2'
+							// htmlFor='react-aria-2'
+							labelPlaceholder='Search by character name'
+							aria-label='Search by character name'
 							type='text'
 							value={query}
 							width='85vw'

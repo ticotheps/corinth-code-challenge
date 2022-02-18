@@ -35,7 +35,7 @@ export default function CharacterProfilePage(props) {
 
 	const router = useRouter();
 	const characterId = router.query.characterId;
-	console.log({ characterId });
+	// console.log({ characterId });
 
 	// console.log('Profile Page - props = ', props);
 
