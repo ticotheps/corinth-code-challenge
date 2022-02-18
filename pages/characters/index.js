@@ -29,7 +29,7 @@ export default function CharactersPage(props) {
 						}}
 						weight='bold'
 					>
-						All Characters
+						Browse All Characters
 					</Text>
 				</Col>
 			</Row>
