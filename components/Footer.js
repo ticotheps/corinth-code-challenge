@@ -13,7 +13,7 @@ export default function Footer() {
 			</Row>
 			<Spacer y={1} />
 			<Row align='center' justify='center'>
-				<Text p size='0.75rem'>
+				<Text size='0.75rem'>
 					Copyright &#169; 2022 Thumb Technology Consulting LLC
 				</Text>
 			</Row>
