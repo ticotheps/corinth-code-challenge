@@ -56,11 +56,11 @@ export default function SearchPage() {
 				<Row justify='center' align='center'>
 					<form>
 						<Input
-							labelPlaceholder='Type the name of a favorite character'
+							labelPlaceholder='Search by character name...'
 							aria-label='search for a Star Wars character'
 							type='text'
 							value={query}
-							width='70vw'
+							width='85vw'
 							clearable
 							onChange={(e) => onChangeHandler(e)}
 							contentRightStyling={false}
