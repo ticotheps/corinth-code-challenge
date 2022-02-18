@@ -27,7 +27,7 @@ export default function SearchPage() {
 						}}
 						weight='bold'
 					>
-						Star Wars Characters
+						Find Your Favorites
 					</Text>
 				</Row>
 				<Spacer y={3} />
@@ -40,7 +40,7 @@ export default function SearchPage() {
 				<Row justify='center' align='center'>
 					<Link href='/characters'>
 						<Button color='gradient' size='xl' ghost auto rounded>
-							View Featured Characters
+							View All Characters
 						</Button>
 					</Link>
 				</Row>
