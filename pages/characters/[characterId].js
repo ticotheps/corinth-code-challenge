@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'fs/promises';
 
-import { useRouter } from 'next/router';
-import useLocalStorage from '../../utils/hooks/useLocalStorage';
+// import { useRouter } from 'next/router';
+// import useLocalStorage from '../../utils/hooks/useLocalStorage';
 import {
 	Container,
 	Grid,
@@ -38,7 +38,7 @@ export default function CharacterProfilePage(props) {
 	// console.log({ characterId });
 
 	const staticPropsCharacter = props.character;
-	console.log({ staticPropsCharacter });
+	// console.log({ staticPropsCharacter });
 
 	// console.log('Profile Page - props = ', props);
 

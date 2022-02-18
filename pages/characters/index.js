@@ -16,8 +16,6 @@ import CharacterItem from '../../components/CharacterItem';
 export default function CharactersPage(props) {
 	const { people } = props;
 
-	// console.log('Characters Page - props = ', props);
-
 	return (
 		<Container fluid>
 			<Spacer y={3} />
