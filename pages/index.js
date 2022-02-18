@@ -48,7 +48,7 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						The one-stop-shop for learning more about your favorite Star Wars
+						Your one-stop-shop for learning ALL about your favorite Star Wars
 						characters!
 					</Text>
 				</Row>
