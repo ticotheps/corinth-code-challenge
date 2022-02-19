@@ -58,7 +58,7 @@ export default function SearchInput() {
 	};
 
 	return (
-		<>
+		<Container css={{ maxWidth: '95%' }}>
 			<Grid justify='center'>
 				<Input
 					labelPlaceholder='Search by character name'
@@ -80,6 +80,6 @@ export default function SearchInput() {
 				/>
 			</Grid>
 			<Grid justify='center'>{renderResult()}</Grid>
-		</>
+		</Container>
 	);
 }
