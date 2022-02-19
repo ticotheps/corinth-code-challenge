@@ -45,9 +45,11 @@ export default function CharacterProfilePage(props) {
 				<Row justify='center' align='center'>
 					<Text
 						h1
-						size='3.5em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
+							'@xs': {
+								fontSize: '3.5rem',
+							},
 						}}
 						weight='bold'
 					>
@@ -55,18 +57,26 @@ export default function CharacterProfilePage(props) {
 					</Text>
 				</Row>
 				<Spacer y={1} />
-				<Row justify='center' align='center'>
-					<Grid.Container gap={2} justify='center' wrap='wrap'>
-						<Grid xs={10} sm={8} md={6} lg={4} xl={2}>
-							<Card cover>
-								<Card.Image
-									src='../images/yoda_unavailable.jpg'
-									height='auto'
-									width='100%'
-									alt='Meme of Yoda apologizing that this image is unavailble'
-								/>
-							</Card>
-						</Grid>
+				<Grid.Container gap={2} justify='space-evenly' wrap='wrap'>
+					<Grid>
+						<Card cover css={{ width: '85%', '@md': { marginLeft: '30%' } }}>
+							<Card.Image
+								src='../images/yoda_unavailable.jpg'
+								height='auto'
+								width='100%'
+								alt='Meme of Yoda apologizing that this image is unavailble'
+							/>
+						</Card>
+					</Grid>
+					<Grid.Container
+						xs
+						css={{
+							width: '100%',
+							'@xs': {
+								alignContent: 'center',
+							},
+						}}
+					>
 						<Row>
 							<Col align='right'>
 								<Text h4 size='1.75rem' weight='bold'>
@@ -182,7 +192,7 @@ export default function CharacterProfilePage(props) {
 							</Col>
 						</Row>
 					</Grid.Container>
-				</Row>
+				</Grid.Container>
 			</Col>
 		</Container>
 	);
