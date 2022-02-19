@@ -7,7 +7,6 @@ import '../styles/globals.css';
 
 export default function MyApp({ Component, pageProps }) {
 	const [queryClient, setQueryClient] = useState(new QueryClient());
-	console.log({ queryClient });
 	return (
 		<QueryClientProvider client={queryClient}>
 			<NextUIProvider>
