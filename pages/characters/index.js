@@ -43,7 +43,7 @@ export default function CharactersPage(props) {
 			<Row justify='center' align='center'>
 				<Link href='/characters/search'>
 					<Button color='gradient' size='xl' ghost auto rounded>
-						Search All Characters
+						Search by Character Name
 					</Button>
 				</Link>
 			</Row>
