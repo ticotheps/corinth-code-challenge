@@ -7,6 +7,7 @@ import {
 	Loading,
 	Col,
 	Row,
+	Text,
 } from '@nextui-org/react';
 import { useQuery } from 'react-query';
 import { useState } from 'react';
