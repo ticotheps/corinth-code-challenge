@@ -27,7 +27,7 @@ export default function SearchPage() {
 						}}
 						weight='bold'
 					>
-						Find Your Favorites
+						Find Your Favorite Characters
 					</Text>
 				</Row>
 				<Spacer y={3} />
