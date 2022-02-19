@@ -7,6 +7,7 @@ import {
 	Text,
 	Spacer,
 	Button,
+	Grid,
 } from '@nextui-org/react';
 
 const SearchInput = dynamic(() => import('../../components/SearchInput'), {
@@ -17,8 +18,8 @@ export default function SearchPage() {
 	return (
 		<Container fluid>
 			<Spacer y={3} />
-			<Col align='center'>
-				<Row justify='center' align='center'>
+			<Grid.Container justify='center' align='center'>
+				<Grid>
 					<Text
 						h1
 						size='2.3rem'
@@ -37,21 +38,20 @@ export default function SearchPage() {
 					>
 						Find Your Favorites
 					</Text>
-				</Row>
-				<Spacer y={3} />
-				<Row justify='center' align='center'>
+					<Spacer y={3} />
+				</Grid>
+				<Grid justify='center' align='center' css={{ width: '100%' }}>
 					<SearchInput />
-				</Row>
-				<Spacer y={5} />
-				<Row justify='center' align='center'>
+				</Grid>
+				<Grid justify='center' align='center'>
+					<Spacer y={3} />
 					<Link href='/characters'>
 						<Button color='gradient' size='xl' ghost auto rounded>
 							Browse All Characters
 						</Button>
 					</Link>
-				</Row>
-				<Spacer y={3} />
-			</Col>
+				</Grid>
+			</Grid.Container>
 		</Container>
 	);
 }

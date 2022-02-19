@@ -30,16 +30,18 @@ export default function SearchInput() {
 	const renderResult = () => {
 		if (isLoading) {
 			return (
-				<>
+				<Grid>
 					<Spacer y={3} />
 					<Loading type='points' size='xl' />
-				</>
+				</Grid>
 			);
 		} else if (isError) {
 			return (
-				<Text h3>
-					Something went wrong. Please refresh your browser and try again.
-				</Text>
+				<Grid>
+					<Text h3>
+						Something went wrong. Please refresh your browser and try again.
+					</Text>
+				</Grid>
 			);
 		} else if (isSuccess) {
 			return (
@@ -56,17 +58,17 @@ export default function SearchInput() {
 	};
 
 	return (
-		<Container fluid>
+		<>
 			<Input
 				labelPlaceholder='Search by character name'
 				aria-label='Search by character name'
 				type='text'
-				width='100%'
 				clearable
 				onChange={(e) => setSearchValue(e.target.value)}
 				value={searchValue}
 				contentRightStyling={false}
 				css={{
+					width: '100%',
 					'@xs': {
 						width: '85%',
 					},
@@ -75,7 +77,7 @@ export default function SearchInput() {
 					},
 				}}
 			/>
-			<Col justify='center'>{renderResult()}</Col>
-		</Container>
+			<Grid justify='center'>{renderResult()}</Grid>
+		</>
 	);
 }
