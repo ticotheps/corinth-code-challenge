@@ -32,9 +32,7 @@ export default function SearchPage() {
 				</Row>
 				<Spacer y={3} />
 				<Row justify='center' align='center'>
-					<form>
-						<SearchInput />
-					</form>
+					<SearchInput />
 				</Row>
 				<Spacer y={5} />
 				<Row justify='center' align='center'>

@@ -2,7 +2,6 @@ import { Grid, Col, Link, Card, Row, Text } from '@nextui-org/react';
 
 export default function SearchResults(props) {
 	const { data } = props;
-	// console.log({ data });
 
 	const results = data.map((character, index) => {
 		const characterUrl = character.url;

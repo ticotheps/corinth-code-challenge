@@ -61,13 +61,20 @@ export default function SearchInput() {
 				labelPlaceholder='Search by character name'
 				aria-label='Search by character name'
 				type='text'
-				width='70vw'
+				width='100%'
 				clearable
 				onChange={(e) => setSearchValue(e.target.value)}
 				value={searchValue}
 				contentRightStyling={false}
+				css={{
+					'@xs': {
+						width: '85%',
+					},
+					'@md': {
+						width: '50%',
+					},
+				}}
 			/>
-
 			<Col justify='center'>{renderResult()}</Col>
 		</Container>
 	);
