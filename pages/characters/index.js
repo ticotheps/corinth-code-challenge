@@ -23,9 +23,12 @@ export default function CharactersPage(props) {
 				<Col align='center'>
 					<Text
 						h1
-						size='3.5em'
+						size='2.1em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
+							'@xs': {
+								fontSize: '3.5rem',
+							},
 						}}
 						weight='bold'
 					>
