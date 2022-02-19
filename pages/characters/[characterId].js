@@ -201,7 +201,8 @@ export async function getStaticPaths() {
 			{ params: { characterId: '14' } },
 			{ params: { characterId: '15' } },
 			{ params: { characterId: '16' } },
-			{ params: { characterId: '17' } },
+			// 'https://swapi.dev/api/people/17/' = 404 error
+			// { params: { characterId: '17' } },
 			{ params: { characterId: '18' } },
 			{ params: { characterId: '19' } },
 			{ params: { characterId: '20' } },
