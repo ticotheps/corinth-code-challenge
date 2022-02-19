@@ -211,9 +211,9 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
 	return {
 		paths: [
-			// { params: { characterId: '1' } },
-			// { params: { characterId: '2' } },
-			// { params: { characterId: '3' } },
+			{ params: { characterId: '1' } },
+			{ params: { characterId: '2' } },
+			{ params: { characterId: '3' } },
 			{ params: { characterId: '4' } },
 			{ params: { characterId: '5' } },
 			{ params: { characterId: '6' } },
@@ -227,8 +227,8 @@ export async function getStaticPaths() {
 			{ params: { characterId: '14' } },
 			{ params: { characterId: '15' } },
 			{ params: { characterId: '16' } },
-			// 'https://swapi.dev/api/people/17/' = 404 error
-			// { params: { characterId: '17' } },
+			// no need to pre-render for characterId '17' b/c it doesn't exist
+			// on API.
 			{ params: { characterId: '18' } },
 			{ params: { characterId: '19' } },
 			{ params: { characterId: '20' } },
