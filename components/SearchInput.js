@@ -59,24 +59,26 @@ export default function SearchInput() {
 
 	return (
 		<>
-			<Input
-				labelPlaceholder='Search by character name'
-				aria-label='Search by character name'
-				type='text'
-				clearable
-				onChange={(e) => setSearchValue(e.target.value)}
-				value={searchValue}
-				contentRightStyling={false}
-				css={{
-					width: '100%',
-					'@xs': {
-						width: '85%',
-					},
-					'@md': {
-						width: '50%',
-					},
-				}}
-			/>
+			<Grid justify='center'>
+				<Input
+					labelPlaceholder='Search by character name'
+					aria-label='Search by character name'
+					type='text'
+					clearable
+					onChange={(e) => setSearchValue(e.target.value)}
+					value={searchValue}
+					contentRightStyling={false}
+					css={{
+						width: '100%',
+						'@xs': {
+							width: '85%',
+						},
+						'@md': {
+							width: '50%',
+						},
+					}}
+				/>
+			</Grid>
 			<Grid justify='center'>{renderResult()}</Grid>
 		</>
 	);
