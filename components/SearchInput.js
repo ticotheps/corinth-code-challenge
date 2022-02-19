@@ -1,51 +1,73 @@
-import React, { useState, useCallback } from 'react';
-import { Search } from 'react-iconly';
-import { Input, Button } from '@nextui-org/react';
+import {
+	Container,
+	Grid,
+	Input,
+	Button,
+	Spacer,
+	Loading,
+	Col,
+	Row,
+} from '@nextui-org/react';
+import { useQuery } from 'react-query';
+import { useState } from 'react';
+import useDebounce from '../utils/hooks/useDebounce';
+import searchCharacters from '../utils/searchCharacters';
+import SearchResults from './SearchResults';
 
 export default function SearchInput() {
-	const [query, setQuery] = useState('');
-	const [searchResults, setSearchResults] = useState([]);
+	const [searchValue, setSearchValue] = useState('');
+	const debouncedSearchValue = useDebounce(searchValue, 300);
 
-	const searchUrl = (query) => `https://swapi.dev/api/people/?search=${query}`;
-
-	const onClickHandler = useCallback((e) => {
-		console.log('onClickHandler() function has been triggered!');
-		console.log("The current 'query' string is: ", query);
-		if (query.length >= 1) {
-			fetch(searchUrl(query))
-				.then((res) => res.json())
-				.then((data) => {
-					setSearchResults(data);
-					console.log({ data });
-					console.log('Search Results: ', searchResults);
-				});
+	const { isLoading, isError, isSuccess, data } = useQuery(
+		['searchCharacters', debouncedSearchValue],
+		() => searchCharacters(debouncedSearchValue),
+		{
+			enabled: debouncedSearchValue.length > 0,
 		}
-	}, []);
+	);
 
-	const onChangeHandler = (e) => {
-		setQuery(e.target.value);
-		console.log({ query });
+	const renderResult = () => {
+		if (isLoading) {
+			return (
+				<>
+					<Spacer y={3} />
+					<Loading type='points' size='xl' />
+				</>
+			);
+		} else if (isError) {
+			return (
+				<Text h3>
+					Something went wrong. Please refresh your browser and try again.
+				</Text>
+			);
+		} else if (isSuccess) {
+			return (
+				<>
+					<Spacer y={1} />
+					<Grid.Container gap={1} justify='center'>
+						<SearchResults data={data} />
+					</Grid.Container>
+				</>
+			);
+		} else {
+			return <></>;
+		}
 	};
+
 	return (
-		<>
+		<Container fluid>
 			<Input
 				labelPlaceholder='Search by character name'
 				aria-label='Search by character name'
 				type='text'
-				value={query}
-				width='85vw'
+				width='70vw'
 				clearable
-				onChange={(e) => onChangeHandler(e)}
+				onChange={(e) => setSearchValue(e.target.value)}
+				value={searchValue}
 				contentRightStyling={false}
-				contentRight={
-					<Button
-						auto
-						color='gradient'
-						icon={<Search fill='currentColor' />}
-						onClick={(e) => onClickHandler(e)}
-					/>
-				}
 			/>
-		</>
+
+			<Col justify='center'>{renderResult()}</Col>
+		</Container>
 	);
 }
