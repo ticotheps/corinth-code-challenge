@@ -165,12 +165,10 @@ export default function CharacterProfilePage(props) {
 export async function getStaticProps(context) {
 	const { params } = context;
 	const characterId = params.characterId;
-	console.log({ characterId });
 
 	const file_path = path.join(process.cwd(), 'data', 'mock_data.json');
 	const json_data = await fs.readFile(file_path);
 	const mock_data = JSON.parse(json_data);
-	console.log({ mock_data });
 
 	const matchedCharacter = mock_data.people.find((character) => {
 		const storedCharId = character.url.split('/').slice(-2)[0];
