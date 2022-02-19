@@ -38,7 +38,7 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Find 'em.
+						Find &lsquo;em.
 					</Text>
 					<Text
 						h1
@@ -54,7 +54,7 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Meet 'em.
+						Meet &lsquo;em.
 					</Text>
 					<Text
 						h1
@@ -70,7 +70,7 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Greet 'em!
+						Greet &lsquo;em!
 					</Text>
 				</Grid>
 				<Grid justify='center' align='center'>
@@ -110,8 +110,8 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Your one-stop-shop for the "<i>deets</i>" (details) on your favorite
-						Star Wars characters!
+						Your one-stop-shop for the &quot;<i>deets</i>&quot; (details) on
+						your favorite Star Wars characters!
 					</Text>
 					<Spacer y={2} />
 				</Grid>
