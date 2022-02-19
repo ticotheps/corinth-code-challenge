@@ -8,10 +8,36 @@ import {
 	Card,
 	Text,
 	Spacer,
+	Loading,
 } from '@nextui-org/react';
 
 export default function CharacterProfilePage(props) {
 	const { character } = props;
+
+	if (!character) {
+		return (
+			<Container fluid>
+				<Col align='center'>
+					<Spacer y={10} />
+					<Row justify='center' align='center'>
+						<Text
+							h1
+							size='3.5em'
+							css={{
+								textGradient: '45deg, $blue500 -20%, $pink500 50%',
+							}}
+							weight='bold'
+						>
+							Loading
+						</Text>
+						<Spacer x={1} />
+						<Loading type='points' size='xl' />
+					</Row>
+					<Spacer y={4} />
+				</Col>
+			</Container>
+		);
+	}
 
 	return (
 		<Container fluid>
@@ -185,9 +211,9 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
 	return {
 		paths: [
-			{ params: { characterId: '1' } },
-			{ params: { characterId: '2' } },
-			{ params: { characterId: '3' } },
+			// { params: { characterId: '1' } },
+			// { params: { characterId: '2' } },
+			// { params: { characterId: '3' } },
 			{ params: { characterId: '4' } },
 			{ params: { characterId: '5' } },
 			{ params: { characterId: '6' } },
@@ -270,6 +296,6 @@ export async function getStaticPaths() {
 			{ params: { characterId: '82' } },
 			{ params: { characterId: '83' } },
 		],
-		fallback: false,
+		fallback: true,
 	};
 }
