@@ -55,19 +55,19 @@ export default function CharactersPage(props) {
 }
 
 async function getData() {
-	const file_path = path.join(process.cwd(), 'data', 'mock_data.json');
+	const file_path = path.join(process.cwd(), 'data', 'people_data.json');
 	const json_data = await fs.readFile(file_path);
-	const mock_data = JSON.parse(json_data);
+	const people_data = JSON.parse(json_data);
 
-	return mock_data;
+	return people_data;
 }
 
 export async function getStaticProps() {
-	const mock_data = await getData();
+	const people_data = await getData();
 
 	return {
 		props: {
-			people: mock_data.people,
+			people: people_data.people,
 		},
 	};
 }

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-// import mock_data from '../data/mock_data.json';
+// import people_data from '../data/people_data.json';
 import findCharacterNameByUrl from './findCharacterNameByUrl';
 
 // returns a single-word description of the current page content

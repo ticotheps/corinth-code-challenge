@@ -191,6 +191,63 @@ export default function CharacterProfilePage(props) {
 								</Text>
 							</Col>
 						</Row>
+						{/* <Row>
+							<Col align='right'>
+								<Text h4 size='1.75rem' weight='bold'>
+									Species:
+								</Text>
+							</Col>
+							<Spacer y={1} x={2} />
+							<Col align='left'>
+								<Text
+									h4
+									size='1.75rem'
+									css={{
+										textGradient: '45deg, $blue500 -20%, $pink500 50%',
+									}}
+								>
+									{character.species}
+								</Text>
+							</Col>
+						</Row>
+						<Row>
+							<Col align='right'>
+								<Text h4 size='1.75rem' weight='bold'>
+									Films:
+								</Text>
+							</Col>
+							<Spacer y={1} x={2} />
+							<Col align='left'>
+								<Text
+									h4
+									size='1.75rem'
+									css={{
+										textGradient: '45deg, $blue500 -20%, $pink500 50%',
+									}}
+								>
+									{character.films}
+								</Text>
+							</Col>
+						</Row>
+						<Row>
+							<Col align='right'>
+								<Text h4 size='1.75rem' weight='bold'>
+									Starships:
+								</Text>
+							</Col>
+							<Spacer y={1} x={2} />
+							<Col align='left'>
+								<Text
+									h4
+									size='1.75rem'
+									css={{
+										textGradient: '45deg, $blue500 -20%, $pink500 50%',
+									}}
+								>
+									{character.starships}
+								</Text>
+							</Col>
+						</Row> */}
 					</Grid.Container>
 				</Grid.Container>
 			</Col>
@@ -199,20 +256,20 @@ export default function CharacterProfilePage(props) {
 }
 
 async function getData() {
-	const file_path = path.join(process.cwd(), 'data', 'mock_data.json');
+	const file_path = path.join(process.cwd(), 'data', 'people_data.json');
 	const json_data = await fs.readFile(file_path);
-	const mock_data = JSON.parse(json_data);
+	const people_data = JSON.parse(json_data);
 
-	return mock_data;
+	return people_data;
 }
 
 export async function getStaticProps(context) {
 	const { params } = context;
 	const characterId = params.characterId;
 
-	const mock_data = await getData();
+	const people_data = await getData();
 
-	const matchedCharacter = mock_data.people.find((character) => {
+	const matchedCharacter = people_data.people.find((character) => {
 		const storedCharId = character.url.split('/').slice(-2)[0];
 		return storedCharId === characterId;
 	});
@@ -225,9 +282,9 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-	const mock_data = await getData();
+	const people_data = await getData();
 
-	const characterIdsArr = mock_data.people.map((character) => {
+	const characterIdsArr = people_data.people.map((character) => {
 		return character.url.split('/').slice(-2)[0];
 	});
 
