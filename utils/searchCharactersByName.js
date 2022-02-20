@@ -1,6 +1,6 @@
 import mock_data from '../data/mock_data.json';
 
-export default function searchCharacters(query) {
+export default function searchCharactersByName(query) {
 	return new Promise((resolve) => {
 		// helper function that searches for characters' names that contain
 		// characters from the given query.

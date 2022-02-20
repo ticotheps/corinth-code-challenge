@@ -12,7 +12,7 @@ import {
 import { useQuery } from 'react-query';
 import { useState } from 'react';
 import useDebounce from '../utils/hooks/useDebounce';
-import searchCharacters from '../utils/searchCharacters';
+import searchCharactersByName from '../utils/searchCharactersByName';
 import SearchResults from './SearchResults';
 
 export default function SearchInput() {
@@ -20,8 +20,8 @@ export default function SearchInput() {
 	const debouncedSearchValue = useDebounce(searchValue, 300);
 
 	const { isLoading, isError, isSuccess, data } = useQuery(
-		['searchCharacters', debouncedSearchValue],
-		() => searchCharacters(debouncedSearchValue),
+		['searchCharactersByName', debouncedSearchValue],
+		() => searchCharactersByName(debouncedSearchValue),
 		{
 			enabled: debouncedSearchValue.length > 0,
 		}
