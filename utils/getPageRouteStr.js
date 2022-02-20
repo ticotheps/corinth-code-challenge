@@ -21,10 +21,6 @@ export default function getPageRouteStr() {
 		return 'Home';
 	} else if (fullRouteStr.search(/[\[\]]/) !== -1) {
 		// sets page description in browser tab as '<Character Name>'
-		console.log(
-			'findCharacterNameByUrl: ',
-			findCharacterNameByUrl(characterId)
-		);
 		return findCharacterNameByUrl(characterId);
 	} else {
 		// sets page description in browser tab as 'route' from 'useRouter().route'

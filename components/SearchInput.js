@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useQuery } from 'react-query';
 import {
 	Container,
 	Grid,
@@ -9,8 +11,6 @@ import {
 	Row,
 	Text,
 } from '@nextui-org/react';
-import { useQuery } from 'react-query';
-import { useState } from 'react';
 import useDebounce from '../utils/hooks/useDebounce';
 import searchCharactersByName from '../utils/searchCharactersByName';
 import SearchResults from './SearchResults';
