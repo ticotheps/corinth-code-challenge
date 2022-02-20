@@ -198,13 +198,19 @@ export default function CharacterProfilePage(props) {
 	);
 }
 
+async function getData() {
+	const file_path = path.join(process.cwd(), 'data', 'mock_data.json');
+	const json_data = await fs.readFile(file_path);
+	const mock_data = JSON.parse(json_data);
+
+	return mock_data;
+}
+
 export async function getStaticProps(context) {
 	const { params } = context;
 	const characterId = params.characterId;
 
-	const file_path = path.join(process.cwd(), 'data', 'mock_data.json');
-	const json_data = await fs.readFile(file_path);
-	const mock_data = JSON.parse(json_data);
+	const mock_data = await getData();
 
 	const matchedCharacter = mock_data.people.find((character) => {
 		const storedCharId = character.url.split('/').slice(-2)[0];
@@ -219,93 +225,19 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
+	const mock_data = await getData();
+
+	const characterIdsArr = mock_data.people.map((character) => {
+		return character.url.split('/').slice(-2)[0];
+	});
+
+	const pathsWithParams = characterIdsArr.map((id) => ({
+		params: { characterId: id },
+	}));
+
 	return {
-		paths: [
-			{ params: { characterId: '1' } },
-			{ params: { characterId: '2' } },
-			{ params: { characterId: '3' } },
-			{ params: { characterId: '4' } },
-			{ params: { characterId: '5' } },
-			{ params: { characterId: '6' } },
-			{ params: { characterId: '7' } },
-			{ params: { characterId: '8' } },
-			{ params: { characterId: '9' } },
-			{ params: { characterId: '10' } },
-			{ params: { characterId: '11' } },
-			{ params: { characterId: '12' } },
-			{ params: { characterId: '13' } },
-			{ params: { characterId: '14' } },
-			{ params: { characterId: '15' } },
-			{ params: { characterId: '16' } },
-			// no need to pre-render for characterId '17' b/c it doesn't exist
-			// on API.
-			{ params: { characterId: '18' } },
-			{ params: { characterId: '19' } },
-			{ params: { characterId: '20' } },
-			{ params: { characterId: '21' } },
-			{ params: { characterId: '22' } },
-			{ params: { characterId: '23' } },
-			{ params: { characterId: '24' } },
-			{ params: { characterId: '25' } },
-			{ params: { characterId: '26' } },
-			{ params: { characterId: '27' } },
-			{ params: { characterId: '28' } },
-			{ params: { characterId: '29' } },
-			{ params: { characterId: '30' } },
-			{ params: { characterId: '31' } },
-			{ params: { characterId: '32' } },
-			{ params: { characterId: '33' } },
-			{ params: { characterId: '34' } },
-			{ params: { characterId: '35' } },
-			{ params: { characterId: '36' } },
-			{ params: { characterId: '37' } },
-			{ params: { characterId: '38' } },
-			{ params: { characterId: '39' } },
-			{ params: { characterId: '40' } },
-			{ params: { characterId: '41' } },
-			{ params: { characterId: '42' } },
-			{ params: { characterId: '43' } },
-			{ params: { characterId: '44' } },
-			{ params: { characterId: '45' } },
-			{ params: { characterId: '46' } },
-			{ params: { characterId: '47' } },
-			{ params: { characterId: '48' } },
-			{ params: { characterId: '49' } },
-			{ params: { characterId: '50' } },
-			{ params: { characterId: '51' } },
-			{ params: { characterId: '52' } },
-			{ params: { characterId: '53' } },
-			{ params: { characterId: '54' } },
-			{ params: { characterId: '55' } },
-			{ params: { characterId: '56' } },
-			{ params: { characterId: '57' } },
-			{ params: { characterId: '58' } },
-			{ params: { characterId: '59' } },
-			{ params: { characterId: '60' } },
-			{ params: { characterId: '61' } },
-			{ params: { characterId: '62' } },
-			{ params: { characterId: '63' } },
-			{ params: { characterId: '64' } },
-			{ params: { characterId: '65' } },
-			{ params: { characterId: '66' } },
-			{ params: { characterId: '67' } },
-			{ params: { characterId: '68' } },
-			{ params: { characterId: '69' } },
-			{ params: { characterId: '70' } },
-			{ params: { characterId: '71' } },
-			{ params: { characterId: '72' } },
-			{ params: { characterId: '73' } },
-			{ params: { characterId: '74' } },
-			{ params: { characterId: '75' } },
-			{ params: { characterId: '76' } },
-			{ params: { characterId: '77' } },
-			{ params: { characterId: '78' } },
-			{ params: { characterId: '79' } },
-			{ params: { characterId: '80' } },
-			{ params: { characterId: '81' } },
-			{ params: { characterId: '82' } },
-			{ params: { characterId: '83' } },
-		],
-		fallback: true,
+		// characterId 17 does NOT exist in the SWAPI.dev API and does not exist here
+		paths: pathsWithParams,
+		fallback: false,
 	};
 }
