@@ -63,7 +63,7 @@ export default function SearchInput() {
 				<Input
 					clearable
 					labelPlaceholder='Type character name to search'
-					aria-label='Search by typing character name'
+					aria-label='Type character name to search'
 					type='text'
 					size='lg'
 					placeholder='xLarge'
