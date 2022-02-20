@@ -1,4 +1,4 @@
-import people_data from '../data/people_data.json';
+import swapi_people_data from '../data/swapi_people_data.json';
 
 export default function searchCharactersByName(query) {
 	return new Promise((resolve) => {
@@ -10,7 +10,7 @@ export default function searchCharactersByName(query) {
 
 		// returns only those character objects whose names contain the
 		// characters of the given query.
-		const matchingCharObjects = people_data.people.filter((character) => {
+		const matchingCharObjects = swapi_people_data.people.filter((character) => {
 			return queryInCharName(character.name, query);
 		});
 

@@ -256,20 +256,20 @@ export default function CharacterProfilePage(props) {
 }
 
 async function getData() {
-	const file_path = path.join(process.cwd(), 'data', 'people_data.json');
+	const file_path = path.join(process.cwd(), 'data', 'swapi_people_data.json');
 	const json_data = await fs.readFile(file_path);
-	const people_data = JSON.parse(json_data);
+	const swapi_people_data = JSON.parse(json_data);
 
-	return people_data;
+	return swapi_people_data;
 }
 
 export async function getStaticProps(context) {
 	const { params } = context;
 	const characterId = params.characterId;
 
-	const people_data = await getData();
+	const swapi_people_data = await getData();
 
-	const matchedCharacter = people_data.people.find((character) => {
+	const matchedCharacter = swapi_people_data.people.find((character) => {
 		const storedCharId = character.url.split('/').slice(-2)[0];
 		return storedCharId === characterId;
 	});
@@ -282,9 +282,9 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-	const people_data = await getData();
+	const swapi_people_data = await getData();
 
-	const characterIdsArr = people_data.people.map((character) => {
+	const characterIdsArr = swapi_people_data.people.map((character) => {
 		return character.url.split('/').slice(-2)[0];
 	});
 

@@ -15,6 +15,7 @@ import CharacterItem from '../../components/CharacterItem';
 
 export default function CharactersPage(props) {
 	const { people, species, starships } = props;
+	console.log({ people, species, starships });
 
 	return (
 		<Container fluid>
@@ -64,19 +65,19 @@ async function getData(dataFilePath) {
 }
 
 export async function getStaticProps() {
-	const peopleDataFile = 'people_data.json';
-	const speciesDataFile = 'species_data.json';
-	const starshipsDataFile = 'starships_data.json';
+	const swapiPeopleDataFile = 'swapi_people_data.json';
+	const swapiSpeciesDataFile = 'swapi_species_data.json';
+	const swapiStarshipsDataFile = 'swapi_starships_data.json';
 
-	const people_data = await getData(peopleDataFile);
-	const species_data = await getData(speciesDataFile);
-	const starships_data = await getData(starshipsDataFile);
+	const swapi_people_data = await getData(swapiPeopleDataFile);
+	const swapi_species_data = await getData(swapiSpeciesDataFile);
+	const swapi_starships_data = await getData(swapiStarshipsDataFile);
 
 	return {
 		props: {
-			people: people_data.people,
-			species: species_data.species,
-			starships: starships_data.starships,
+			people: swapi_people_data.people,
+			species: swapi_species_data.species,
+			starships: swapi_starships_data.starships,
 		},
 	};
 }

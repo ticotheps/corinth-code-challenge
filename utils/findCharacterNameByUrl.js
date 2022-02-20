@@ -1,4 +1,4 @@
-import people_data from '../data/people_data.json';
+import swapi_people_data from '../data/swapi_people_data.json';
 import { useRouter } from 'next/router';
 
 export default function findCharacterNameByUrl(desiredCharacterId) {
@@ -12,7 +12,7 @@ export default function findCharacterNameByUrl(desiredCharacterId) {
 
 	// returns only those character objects whose 'url' properties
 	// contain the same id as the given 'desiredCharacterId' param.
-	const matchingCharactersArr = people_data.people.filter((character) => {
+	const matchingCharactersArr = swapi_people_data.people.filter((character) => {
 		return matchingCharacterById(character, desiredCharacterId);
 	});
 
