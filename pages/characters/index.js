@@ -14,7 +14,7 @@ import {
 import CharacterItem from '../../components/CharacterItem';
 
 export default function CharactersPage(props) {
-	const { people } = props;
+	const { people, species, starships } = props;
 
 	return (
 		<Container fluid>
@@ -54,20 +54,29 @@ export default function CharactersPage(props) {
 	);
 }
 
-async function getData() {
-	const file_path = path.join(process.cwd(), 'data', 'people_data.json');
+async function getData(dataFilePath) {
+	const file_path = path.join(process.cwd(), 'data', dataFilePath);
 	const json_data = await fs.readFile(file_path);
-	const people_data = JSON.parse(json_data);
+	const data = JSON.parse(json_data);
 
-	return people_data;
+	console.log({ data });
+	return data;
 }
 
 export async function getStaticProps() {
-	const people_data = await getData();
+	const peopleDataFile = 'people_data.json';
+	const speciesDataFile = 'species_data.json';
+	const starshipsDataFile = 'starships_data.json';
+
+	const people_data = await getData(peopleDataFile);
+	const species_data = await getData(speciesDataFile);
+	const starships_data = await getData(starshipsDataFile);
 
 	return {
 		props: {
 			people: people_data.people,
+			species: species_data.species,
+			starships: starships_data.starships,
 		},
 	};
 }
