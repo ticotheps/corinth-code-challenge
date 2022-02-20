@@ -6,8 +6,7 @@ import findCharacterNameByUrl from './findCharacterNameByUrl';
 // and will be displayed on the user's browser tab
 export default function getPageRouteStr() {
 	const router = useRouter();
-	const characterId =
-		router.query.characterId || 'this is not a character profile page';
+	const characterId = router.query.characterId;
 
 	const fullRouteStr = router.route;
 	const fullRouteArr = fullRouteStr.split('/');
@@ -22,6 +21,10 @@ export default function getPageRouteStr() {
 		return 'Home';
 	} else if (fullRouteStr.search(/[\[\]]/) !== -1) {
 		// sets page description in browser tab as '<Character Name>'
+		console.log(
+			'findCharacterNameByUrl: ',
+			findCharacterNameByUrl(characterId)
+		);
 		return findCharacterNameByUrl(characterId);
 	} else {
 		// sets page description in browser tab as 'route' from 'useRouter().route'

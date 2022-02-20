@@ -1,4 +1,5 @@
 import mock_data from '../data/mock_data.json';
+import { useRouter } from 'next/router';
 
 export default function findCharacterNameByUrl(desiredCharacterId) {
 	// return new Promise((resolve) => {
@@ -15,10 +16,18 @@ export default function findCharacterNameByUrl(desiredCharacterId) {
 		return matchingCharacterById(character, desiredCharacterId);
 	});
 
-	// returns a new array of ONE character object that contains the
-	// 'desiredCharacterId' within it's 'url' property.
-	const matchingCharacter = matchingCharactersArr[0];
-	const matchingCharacterNameStr = matchingCharacter.name;
+	if (matchingCharactersArr.length !== 0) {
+		// returns a new array of ONE character object that contains the
+		// 'desiredCharacterId' within it's 'url' property.
+		const matchingCharacter = matchingCharactersArr[0];
+		const matchingCharacterNameStr = matchingCharacter.name;
 
-	return matchingCharacterNameStr;
+		return matchingCharacterNameStr;
+	} else {
+		const route = useRouter();
+		const asPathCharId = route.asPath.split('/').slice(-1)[0];
+		console.error(
+			`DEV-ERROR-MSG: No existing character with requested id "${asPathCharId}"`
+		);
+	}
 }
