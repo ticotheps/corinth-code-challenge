@@ -140,7 +140,7 @@ export default function HomePage() {
 				<Grid>
 					<Link href='/characters/search'>
 						<Button color='gradient' size='xl' ghost rounded>
-							Search for Characters
+							Search Character Name
 						</Button>
 					</Link>
 				</Grid>
