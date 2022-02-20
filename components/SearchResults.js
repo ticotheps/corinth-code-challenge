@@ -4,8 +4,8 @@ export default function SearchResults(props) {
 	const { data } = props;
 
 	const results = data.map((character, index) => {
-		const characterUrl = character.url;
-		const characterId = characterUrl.split('/').slice(-2)[0];
+		const characterId = character.url.split('/').slice(-2)[0];
+		console.log({ characterId });
 
 		return (
 			<Grid key={index}>
