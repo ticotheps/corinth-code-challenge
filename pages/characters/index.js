@@ -60,7 +60,6 @@ async function getData(dataFilePath) {
 	const json_data = await fs.readFile(file_path);
 	const data = JSON.parse(json_data);
 
-	console.log({ data });
 	return data;
 }
 

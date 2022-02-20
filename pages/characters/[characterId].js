@@ -255,20 +255,28 @@ export default function CharacterProfilePage(props) {
 	);
 }
 
-async function getData() {
-	const file_path = path.join(process.cwd(), 'data', 'swapi_people_data.json');
+async function getData(dataFilePath) {
+	const file_path = path.join(process.cwd(), 'data', dataFilePath);
 	const json_data = await fs.readFile(file_path);
-	const swapi_people_data = JSON.parse(json_data);
+	const data = JSON.parse(json_data);
 
-	return swapi_people_data;
+	return data;
 }
 
 export async function getStaticProps(context) {
 	const { params } = context;
 	const characterId = params.characterId;
 
-	const swapi_people_data = await getData();
+	const swapiPeopleDataFile = 'swapi_people_data.json';
+	const swapiSpeciesDataFile = 'swapi_species_data.json';
+	const swapiStarshipsDataFile = 'swapi_starships_data.json';
 
+	const swapi_people_data = await getData(swapiPeopleDataFile);
+	const swapi_species_data = await getData(swapiSpeciesDataFile);
+	const swapi_starships_data = await getData(swapiStarshipsDataFile);
+
+	// retrieves appropriate character data for profile page based on
+	// 'params.characterId'.
 	const matchedCharacter = swapi_people_data.people.find((character) => {
 		const storedCharId = character.url.split('/').slice(-2)[0];
 		return storedCharId === characterId;
@@ -293,8 +301,7 @@ export async function getStaticPaths() {
 	}));
 
 	return {
-		// characterId 17 does NOT exist in the SWAPI.dev API and does not exist here
 		paths: pathsWithParams,
-		fallback: false,
+		fallback: true,
 	};
 }
