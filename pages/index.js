@@ -19,6 +19,10 @@ export default function HomePage() {
 					justify='center'
 					align='center'
 					css={{
+						'@xs': {
+							marginTop: '1.25rem',
+							marginRight: '1rem',
+						},
 						'@md': {
 							marginTop: '1.5rem',
 						},
@@ -73,11 +77,19 @@ export default function HomePage() {
 						Greet &lsquo;em!
 					</Text>
 				</Grid>
-				<Grid justify='center' align='center'>
+				<Grid
+					justify='center'
+					align='center'
+					css={{
+						'@xs': {
+							marginLeft: '1rem',
+						},
+					}}
+				>
 					<Spacer y={2} />
 					<Card
 						css={{
-							mw: '500px',
+							mw: '400px',
 							'@md': {
 								marginLeft: '4rem',
 							},
