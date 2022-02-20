@@ -12,8 +12,7 @@ import {
 
 export default function CharacterItem(props) {
 	const { character } = props;
-	const characterUrl = character.url;
-	const characterId = characterUrl.split('/').slice(-2)[0];
+	const characterId = character.url.split('/').slice(-2)[0];
 
 	const characterCard = () => (
 		<Grid xs={3}>

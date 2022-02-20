@@ -5,7 +5,6 @@ export default function SearchResults(props) {
 
 	const results = data.map((character, index) => {
 		const characterId = character.url.split('/').slice(-2)[0];
-		console.log({ characterId });
 
 		return (
 			<Grid key={index}>
