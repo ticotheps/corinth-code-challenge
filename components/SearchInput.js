@@ -58,13 +58,15 @@ export default function SearchInput() {
 	};
 
 	return (
-		<Container css={{ maxWidth: '95%' }}>
+		<Container css={{ maxWidth: '100%' }}>
 			<Grid justify='center'>
 				<Input
-					labelPlaceholder='Search by character name'
-					aria-label='Search by character name'
-					type='text'
 					clearable
+					labelPlaceholder='Type character name to search'
+					aria-label='Search by typing character name'
+					type='text'
+					size='lg'
+					placeholder='xLarge'
 					onChange={(e) => setSearchValue(e.target.value)}
 					value={searchValue}
 					contentRightStyling={false}
