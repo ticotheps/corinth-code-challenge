@@ -65,14 +65,7 @@ export default function CharacterProfilePage(props) {
 				</Row>
 				<Spacer y={1} />
 				<Grid.Container gap={2} justify='space-evenly' wrap='wrap'>
-					<Grid
-						xs={12}
-						sm={4}
-						md={4}
-						// css={{
-						// 	marginLeft: '10%',
-						// }}
-					>
+					<Grid xs={12} sm={4} md={5}>
 						<Card cover>
 							<Card.Image
 								src={
@@ -100,7 +93,12 @@ export default function CharacterProfilePage(props) {
 					>
 						<Row>
 							<Col align='right'>
-								<Text h4 size='1.75rem' weight='bold'>
+								<Text
+									h4
+									size='1.75rem'
+									weight='bold'
+									css={{ fontSize: '2.25rem' }}
+								>
 									Height:
 								</Text>
 							</Col>
@@ -111,6 +109,7 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
+										fontSize: '2.25rem',
 									}}
 								>
 									{swapiCharacter.height} cm
@@ -119,7 +118,12 @@ export default function CharacterProfilePage(props) {
 						</Row>
 						<Row>
 							<Col align='right'>
-								<Text h4 size='1.75rem' weight='bold'>
+								<Text
+									h4
+									size='1.75rem'
+									weight='bold'
+									css={{ fontSize: '2.25rem' }}
+								>
 									Mass:
 								</Text>
 							</Col>
@@ -130,6 +134,7 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
+										fontSize: '2.25rem',
 									}}
 								>
 									{swapiCharacter.mass} kg
@@ -138,7 +143,12 @@ export default function CharacterProfilePage(props) {
 						</Row>
 						<Row>
 							<Col align='right'>
-								<Text h4 size='1.75rem' weight='bold'>
+								<Text
+									h4
+									size='1.75rem'
+									weight='bold'
+									css={{ fontSize: '2.25rem' }}
+								>
 									Hair Color:
 								</Text>
 							</Col>
@@ -149,6 +159,7 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
+										fontSize: '2.25rem',
 									}}
 								>
 									{swapiCharacter.hair_color}
@@ -157,7 +168,12 @@ export default function CharacterProfilePage(props) {
 						</Row>
 						<Row>
 							<Col align='right'>
-								<Text h4 size='1.75rem' weight='bold'>
+								<Text
+									h4
+									size='1.75rem'
+									weight='bold'
+									css={{ fontSize: '2.25rem' }}
+								>
 									Skin Color:
 								</Text>
 							</Col>
@@ -168,6 +184,7 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
+										fontSize: '2.25rem',
 									}}
 								>
 									{swapiCharacter.skin_color}
@@ -176,7 +193,12 @@ export default function CharacterProfilePage(props) {
 						</Row>
 						<Row>
 							<Col align='right'>
-								<Text h4 size='1.75rem' weight='bold'>
+								<Text
+									h4
+									size='1.75rem'
+									weight='bold'
+									css={{ fontSize: '2.25rem' }}
+								>
 									Eye Color:
 								</Text>
 							</Col>
@@ -187,6 +209,7 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
+										fontSize: '2.25rem',
 									}}
 								>
 									{swapiCharacter.eye_color}
@@ -195,7 +218,12 @@ export default function CharacterProfilePage(props) {
 						</Row>
 						<Row>
 							<Col align='right'>
-								<Text h4 size='1.75rem' weight='bold'>
+								<Text
+									h4
+									size='1.75rem'
+									weight='bold'
+									css={{ fontSize: '2.25rem' }}
+								>
 									Birth Year:
 								</Text>
 							</Col>
@@ -206,6 +234,7 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
+										fontSize: '2.25rem',
 									}}
 								>
 									{swapiCharacter.birth_year}
