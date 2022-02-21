@@ -11,8 +11,14 @@ import {
 } from '@nextui-org/react';
 
 export default function CharacterItem(props) {
-	const { character } = props;
-	const characterId = character.url.split('/').slice(-2)[0];
+	const { swapiCharacter, akababPeople } = props;
+	// retrieves SWAPI character's 'id' property from its 'url' property.
+	const swapiCharacterId = swapiCharacter.url.split('/').slice(-2)[0];
+
+	const matchingAkababCharacterArr = akababPeople.filter((akababCharacter) => {
+		return akababCharacter.name === swapiCharacter.name;
+	});
+	console.log({ matchingAkababCharacterArr });
 
 	const characterCard = () => (
 		<Grid xs={3}>
@@ -20,12 +26,26 @@ export default function CharacterItem(props) {
 				<Col>
 					<Spacer y={1} />
 					<Row justify='center' align='center'>
-						<Text h3>{character.name}</Text>
+						<Text h3>{swapiCharacter.name}</Text>
 					</Row>
 					<Spacer y={1} />
+					<Grid>
+						<Card cover css={{ width: '85%', '@md': { marginLeft: '30%' } }}>
+							<Card.Image
+								src={
+									matchingAkababCharacterArr.length !== 0
+										? matchingAkababCharacterArr[0].image
+										: '../images/yoda_unavailable.jpg'
+								}
+								height='auto'
+								width='100%'
+								alt='Meme of Yoda apologizing that this image is unavailble'
+							/>
+						</Card>
+					</Grid>
 					<Row justify='center' align='center'>
 						<Button type='button' color='gradient' rounded auto>
-							<NextLink href={`/characters/${characterId}`} passHref>
+							<NextLink href={`/characters/${swapiCharacterId}`} passHref>
 								<Link>
 									<Text
 										css={{ color: 'white' }}

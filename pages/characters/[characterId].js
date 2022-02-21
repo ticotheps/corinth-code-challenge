@@ -12,9 +12,10 @@ import {
 } from '@nextui-org/react';
 
 export default function CharacterProfilePage(props) {
-	const { character } = props;
+	const { swapiCharacter } = props;
+	// console.log({ swapiCharacter });
 
-	if (!character) {
+	if (!swapiCharacter) {
 		return (
 			<Container fluid>
 				<Col align='center'>
@@ -53,7 +54,7 @@ export default function CharacterProfilePage(props) {
 						}}
 						weight='bold'
 					>
-						{character.name}
+						{swapiCharacter.name}
 					</Text>
 				</Row>
 				<Spacer y={1} />
@@ -92,7 +93,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.height} cm
+									{swapiCharacter.height} cm
 								</Text>
 							</Col>
 						</Row>
@@ -111,7 +112,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.mass} kg
+									{swapiCharacter.mass} kg
 								</Text>
 							</Col>
 						</Row>
@@ -130,7 +131,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.hair_color}
+									{swapiCharacter.hair_color}
 								</Text>
 							</Col>
 						</Row>
@@ -149,7 +150,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.skin_color}
+									{swapiCharacter.skin_color}
 								</Text>
 							</Col>
 						</Row>
@@ -168,7 +169,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.eye_color}
+									{swapiCharacter.eye_color}
 								</Text>
 							</Col>
 						</Row>
@@ -187,7 +188,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.birth_year}
+									{swapiCharacter.birth_year}
 								</Text>
 							</Col>
 						</Row>
@@ -206,7 +207,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.species}
+									{swapiCharacter.species}
 								</Text>
 							</Col>
 						</Row>
@@ -225,7 +226,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.films}
+									{swapiCharacter.films}
 								</Text>
 							</Col>
 						</Row>
@@ -244,7 +245,7 @@ export default function CharacterProfilePage(props) {
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 									}}
 								>
-									{character.starships}
+									{swapiCharacter.starships}
 								</Text>
 							</Col>
 						</Row> */}
@@ -258,30 +259,33 @@ export default function CharacterProfilePage(props) {
 async function getData(dataFile) {
 	const file_path = path.join(process.cwd(), 'data', dataFile);
 	const json_data = await fs.readFile(file_path);
-	const people_data = JSON.parse(json_data);
+	const data = JSON.parse(json_data);
 
-	return people_data;
+	return data;
 }
 
 export async function getStaticProps(context) {
-	const { params } = context;
-	const characterId = params.characterId;
-
 	const swapiPeopleDataFile = 'swapi_people_data.json';
 	const swapiSpeciesDataFile = 'swapi_species_data.json';
 	const swapiStarshipsDataFile = 'swapi_starships_data.json';
+	const akababPeopleDataFile = 'akabab_people_data.json';
 
 	const swapi_people_data = await getData(swapiPeopleDataFile);
 	const swapi_species_data = await getData(swapiSpeciesDataFile);
 	const swapi_starships_data = await getData(swapiStarshipsDataFile);
+	const akabab_people_data = await getData(akababPeopleDataFile);
 
-	const matchedCharacter = swapi_people_data.people.find((character) => {
+	// returns a single character object from the 'swapi_people_data' array that
+	// has the same character id as the character rendered on the current profile page.
+	const swapiCharacter = swapi_people_data.people.find((character) => {
+		const { params } = context;
+		const characterId = params.characterId;
 		const storedCharId = character.url.split('/').slice(-2)[0];
 		return storedCharId === characterId;
 	});
 
 	// renders 404 page if a character with the desired id is not found.
-	if (!matchedCharacter) {
+	if (!swapiCharacter) {
 		return {
 			notFound: true,
 		};
@@ -289,18 +293,22 @@ export async function getStaticProps(context) {
 
 	return {
 		props: {
-			character: matchedCharacter,
+			swapiCharacter: swapiCharacter,
 		},
 	};
 }
 
 export async function getStaticPaths() {
-	const people_data = await getData();
+	const swapiPeopleDataFile = 'swapi_people_data.json';
+	const swapi_people_data = await getData(swapiPeopleDataFile);
 
-	const characterIdsArr = people_data.people.map((character) => {
+	// returns an array of characters' 'id' property that has been retrieved
+	// from their 'url' property.
+	const characterIdsArr = swapi_people_data.people.map((character) => {
 		return character.url.split('/').slice(-2)[0];
 	});
 
+	// creates an array of objects needed for the 'paths' property.
 	const pathsWithParams = characterIdsArr.map((id) => ({
 		params: { characterId: id },
 	}));

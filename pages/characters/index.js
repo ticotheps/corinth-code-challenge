@@ -14,7 +14,8 @@ import {
 import CharacterItem from '../../components/CharacterItem';
 
 export default function CharactersPage(props) {
-	const { people, species, starships } = props;
+	const { swapiPeople, akababPeople } = props;
+	// console.log({ swapiPeople, akababPeople });
 
 	return (
 		<Container fluid>
@@ -38,9 +39,27 @@ export default function CharactersPage(props) {
 			</Row>
 			<Spacer y={2} />
 			<Grid.Container gap={2} justify='center'>
-				{people.map((character, index) => (
-					<CharacterItem character={character} key={index} />
-				))}
+				{swapiPeople.map((swapiCharacter, index) => {
+					const swapiCharacterId = swapiCharacter.url.split('/').slice(-2)[0];
+					{
+						/* const matchingAkababCharacterArr = akababPeople.filter(
+						(akababCharacter) => {
+							return akababCharacter.name === swapiCharacter.name;
+						}
+					); */
+					}
+					{
+						/* console.log({ swapiCharacter, matchingAkababCharacterArr }); */
+					}
+
+					return (
+						<CharacterItem
+							swapiCharacter={swapiCharacter}
+							akababPeople={akababPeople}
+							key={index}
+						/>
+					);
+				})}
 			</Grid.Container>
 			<Spacer y={5} />
 			<Row justify='center' align='center'>
@@ -64,18 +83,15 @@ async function getData(dataFile) {
 
 export async function getStaticProps() {
 	const swapiPeopleDataFile = 'swapi_people_data.json';
-	const swapiSpeciesDataFile = 'swapi_species_data.json';
-	const swapiStarshipsDataFile = 'swapi_starships_data.json';
+	const akababPeopleDataFile = 'akabab_people_data.json';
 
 	const swapi_people_data = await getData(swapiPeopleDataFile);
-	const swapi_species_data = await getData(swapiSpeciesDataFile);
-	const swapi_starships_data = await getData(swapiStarshipsDataFile);
+	const akabab_people_data = await getData(akababPeopleDataFile);
 
 	return {
 		props: {
-			people: swapi_people_data.people,
-			species: swapi_species_data.species,
-			starships: swapi_starships_data.starships,
+			swapiPeople: swapi_people_data.people,
+			akababPeople: akabab_people_data.people,
 		},
 	};
 }
