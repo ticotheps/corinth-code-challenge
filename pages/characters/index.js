@@ -15,7 +15,6 @@ import CharacterItem from '../../components/CharacterItem';
 
 export default function CharactersPage(props) {
 	const { people, species, starships } = props;
-	console.log({ people, species, starships });
 
 	return (
 		<Container fluid>
@@ -55,8 +54,8 @@ export default function CharactersPage(props) {
 	);
 }
 
-async function getData(dataFilePath) {
-	const file_path = path.join(process.cwd(), 'data', dataFilePath);
+async function getData(dataFile) {
+	const file_path = path.join(process.cwd(), 'data', dataFile);
 	const json_data = await fs.readFile(file_path);
 	const data = JSON.parse(json_data);
 

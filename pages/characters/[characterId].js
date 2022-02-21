@@ -255,8 +255,8 @@ export default function CharacterProfilePage(props) {
 	);
 }
 
-async function getData(dataFilePath) {
-	const file_path = path.join(process.cwd(), 'data', 'swapi_people_data.json');
+async function getData(dataFile) {
+	const file_path = path.join(process.cwd(), 'data', dataFile);
 	const json_data = await fs.readFile(file_path);
 	const people_data = JSON.parse(json_data);
 
