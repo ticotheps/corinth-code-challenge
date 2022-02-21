@@ -20,10 +20,10 @@ export default function CharactersPage(props) {
 		<Container fluid>
 			<Spacer y={3} />
 			<Grid.Container justify='center' align='center'>
-				<Grid>
+				<Grid justify='center' wrap='wrap'>
 					<Text
 						h1
-						size='2.1em'
+						size='3em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
 							'@xs': {
@@ -37,7 +37,7 @@ export default function CharactersPage(props) {
 					<Spacer y={2} />
 				</Grid>
 				<Container fluid>
-					<Grid.Container gap={2} justify='center' wrap='wrap'>
+					<Grid.Container gap={3} justify='center' wrap='wrap'>
 						{swapiPeople.map((swapiCharacter, index) => (
 							<CharacterItem
 								swapiCharacter={swapiCharacter}

@@ -23,20 +23,33 @@ export default function CharacterItem(props) {
 		<Grid>
 			<Card bordered hoverable>
 				<Spacer y={1} />
-				<Grid.Container gap={2} justify='space-evenly' wrap='wrap'>
-					<Text h3>{swapiCharacter.name}</Text>
+				<Grid.Container gap={2} align='center' justify='center' wrap='wrap'>
+					<Text
+						h2
+						css={{
+							'@xs': {
+								fontSize: '2rem',
+							},
+						}}
+					>
+						{swapiCharacter.name}
+					</Text>
 				</Grid.Container>
-				<Spacer y={1} />
-				<Grid justify='center' align='center'>
-					<Card cover css={{ position: 'relative' }}>
+				<Grid xs={12} justify='center' align='center'>
+					<Card
+						cover
+						css={{
+							position: 'relative',
+						}}
+					>
 						<Card.Image
 							src={
 								matchingAkababCharacterArr.length > 0
 									? matchingAkababCharacterArr[0].image
 									: '../images/yoda_unavailable.jpg'
 							}
-							height={200}
-							width={150}
+							height={300}
+							width={250}
 							alt={
 								matchingAkababCharacterArr.length > 0
 									? matchingAkababCharacterArr[0].name
@@ -48,14 +61,13 @@ export default function CharacterItem(props) {
 						/>
 					</Card>
 				</Grid>
-				<Spacer y={1} />
 				<Grid justify='center' align='center'>
 					<Button type='button' color='gradient' size='lg' rounded auto>
 						<NextLink href={`/characters/${swapiCharacterId}`} passHref>
 							<Link>
 								<Text
 									css={{ color: 'white' }}
-									size={12}
+									size={18}
 									weight='bold'
 									transform='uppercase'
 								>
@@ -65,9 +77,7 @@ export default function CharacterItem(props) {
 						</NextLink>
 					</Button>
 				</Grid>
-				<Spacer y={1} />
 			</Card>
-			<Spacer y={1} />
 		</Grid>
 	);
 
