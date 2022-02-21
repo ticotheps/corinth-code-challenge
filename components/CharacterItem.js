@@ -20,47 +20,54 @@ export default function CharacterItem(props) {
 	});
 
 	const characterCard = () => (
-		<Grid xs={3}>
-			<Card hoverable css={{ minWidth: '250px' }}>
-				<Col>
-					<Spacer y={1} />
-					<Row justify='center' align='center'>
-						<Text h3>{swapiCharacter.name}</Text>
-					</Row>
-					<Spacer y={1} />
-					<Grid>
-						<Card cover css={{ width: '85%', '@md': { marginLeft: '30%' } }}>
-							<Card.Image
-								src={
-									matchingAkababCharacterArr.length > 0
-										? matchingAkababCharacterArr[0].image
-										: '../images/yoda_unavailable.jpg'
-								}
-								height='auto'
-								width='100%'
-								alt='Meme of Yoda apologizing that this image is unavailble'
-							/>
-						</Card>
-					</Grid>
-					<Row justify='center' align='center'>
-						<Button type='button' color='gradient' rounded auto>
-							<NextLink href={`/characters/${swapiCharacterId}`} passHref>
-								<Link>
-									<Text
-										css={{ color: 'white' }}
-										size={12}
-										weight='bold'
-										transform='uppercase'
-									>
-										Learn More
-									</Text>
-								</Link>
-							</NextLink>
-						</Button>
-					</Row>
-					<Spacer y={1} />
-				</Col>
+		<Grid>
+			<Card bordered hoverable>
+				<Spacer y={1} />
+				<Grid.Container gap={2} justify='space-evenly' wrap='wrap'>
+					<Text h3>{swapiCharacter.name}</Text>
+				</Grid.Container>
+				<Spacer y={1} />
+				<Grid justify='center' align='center'>
+					<Card cover css={{ position: 'relative' }}>
+						<Card.Image
+							src={
+								matchingAkababCharacterArr.length > 0
+									? matchingAkababCharacterArr[0].image
+									: '../images/yoda_unavailable.jpg'
+							}
+							height={200}
+							width={150}
+							alt={
+								matchingAkababCharacterArr.length > 0
+									? matchingAkababCharacterArr[0].name
+									: 'Meme of Yoda apologizing that this image is unavailble'
+							}
+							css={{
+								objectPosition: 'center top',
+							}}
+						/>
+					</Card>
+				</Grid>
+				<Spacer y={1} />
+				<Grid justify='center' align='center'>
+					<Button type='button' color='gradient' size='lg' rounded auto>
+						<NextLink href={`/characters/${swapiCharacterId}`} passHref>
+							<Link>
+								<Text
+									css={{ color: 'white' }}
+									size={12}
+									weight='bold'
+									transform='uppercase'
+								>
+									Learn More
+								</Text>
+							</Link>
+						</NextLink>
+					</Button>
+				</Grid>
+				<Spacer y={1} />
 			</Card>
+			<Spacer y={1} />
 		</Grid>
 	);
 

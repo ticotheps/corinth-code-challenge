@@ -19,8 +19,8 @@ export default function CharactersPage(props) {
 	return (
 		<Container fluid>
 			<Spacer y={3} />
-			<Row justify='center' align='center'>
-				<Col align='center'>
+			<Grid.Container justify='center' align='center'>
+				<Grid>
 					<Text
 						h1
 						size='2.1em'
@@ -34,26 +34,28 @@ export default function CharactersPage(props) {
 					>
 						Browse All Characters
 					</Text>
-				</Col>
-			</Row>
-			<Spacer y={2} />
-			<Grid.Container gap={2} justify='center'>
-				{swapiPeople.map((swapiCharacter, index) => (
-					<CharacterItem
-						swapiCharacter={swapiCharacter}
-						akababPeople={akababPeople}
-						key={index}
-					/>
-				))}
+					<Spacer y={2} />
+				</Grid>
+				<Container fluid>
+					<Grid.Container gap={2} justify='center' wrap='wrap'>
+						{swapiPeople.map((swapiCharacter, index) => (
+							<CharacterItem
+								swapiCharacter={swapiCharacter}
+								akababPeople={akababPeople}
+								key={index}
+							/>
+						))}
+					</Grid.Container>
+				</Container>
+				<Grid justify='center' align='center'>
+					<Spacer y={5} />
+					<Link href='/characters/search'>
+						<Button color='gradient' size='xl' ghost auto rounded>
+							Search Character Name
+						</Button>
+					</Link>
+				</Grid>
 			</Grid.Container>
-			<Spacer y={5} />
-			<Row justify='center' align='center'>
-				<Link href='/characters/search'>
-					<Button color='gradient' size='xl' ghost auto rounded>
-						Search Character Name
-					</Button>
-				</Link>
-			</Row>
 		</Container>
 	);
 }
