@@ -12,7 +12,14 @@ import {
 } from '@nextui-org/react';
 
 export default function CharacterProfilePage(props) {
-	const { swapiCharacter } = props;
+	const { swapiCharacter, akababPeople } = props;
+	// console.log({ akababPeople });
+
+	const matchingAkababCharacterArr = akababPeople.filter((akababCharacter) => {
+		return akababCharacter.name === swapiCharacter.name;
+	});
+
+	// console.log({ matchingAkababCharacterArr });
 
 	if (!swapiCharacter) {
 		return (
@@ -50,6 +57,9 @@ export default function CharacterProfilePage(props) {
 							'@xs': {
 								fontSize: '3.5rem',
 							},
+							'@md': {
+								fontSize: '4.5rem',
+							},
 						}}
 						weight='bold'
 					>
@@ -58,16 +68,30 @@ export default function CharacterProfilePage(props) {
 				</Row>
 				<Spacer y={1} />
 				<Grid.Container gap={2} justify='space-evenly' wrap='wrap'>
-					<Grid>
-						<Card cover css={{ width: '85%', '@md': { marginLeft: '30%' } }}>
+					<Grid
+						xs={12}
+						sm={4}
+						md={4}
+						// css={{
+						// 	marginLeft: '10%',
+						// }}
+					>
+						<Card cover>
 							<Card.Image
-								src='../images/yoda_unavailable.jpg'
+								src={
+									matchingAkababCharacterArr[0].image ||
+									'../images/yoda_unavailable.jpg'
+								}
 								height='auto'
 								width='100%'
-								alt='Meme of Yoda apologizing that this image is unavailble'
+								alt={
+									matchingAkababCharacterArr[0].image ||
+									'Meme of Yoda apologizing that this image is unavailble'
+								}
 							/>
 						</Card>
 					</Grid>
+
 					<Grid.Container
 						xs
 						css={{
@@ -293,6 +317,7 @@ export async function getStaticProps(context) {
 	return {
 		props: {
 			swapiCharacter: swapiCharacter,
+			akababPeople: akabab_people_data.people,
 		},
 	};
 }
