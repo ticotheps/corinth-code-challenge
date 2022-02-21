@@ -18,7 +18,6 @@ export default function CharacterItem(props) {
 	const matchingAkababCharacterArr = akababPeople.filter((akababCharacter) => {
 		return akababCharacter.name === swapiCharacter.name;
 	});
-	console.log({ matchingAkababCharacterArr });
 
 	const characterCard = () => (
 		<Grid xs={3}>
@@ -33,7 +32,7 @@ export default function CharacterItem(props) {
 						<Card cover css={{ width: '85%', '@md': { marginLeft: '30%' } }}>
 							<Card.Image
 								src={
-									matchingAkababCharacterArr.length !== 0
+									matchingAkababCharacterArr.length > 0
 										? matchingAkababCharacterArr[0].image
 										: '../images/yoda_unavailable.jpg'
 								}

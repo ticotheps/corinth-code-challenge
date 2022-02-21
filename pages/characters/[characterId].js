@@ -13,7 +13,6 @@ import {
 
 export default function CharacterProfilePage(props) {
 	const { swapiCharacter } = props;
-	// console.log({ swapiCharacter });
 
 	if (!swapiCharacter) {
 		return (

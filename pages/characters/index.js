@@ -15,7 +15,6 @@ import CharacterItem from '../../components/CharacterItem';
 
 export default function CharactersPage(props) {
 	const { swapiPeople, akababPeople } = props;
-	// console.log({ swapiPeople, akababPeople });
 
 	return (
 		<Container fluid>
@@ -39,27 +38,13 @@ export default function CharactersPage(props) {
 			</Row>
 			<Spacer y={2} />
 			<Grid.Container gap={2} justify='center'>
-				{swapiPeople.map((swapiCharacter, index) => {
-					const swapiCharacterId = swapiCharacter.url.split('/').slice(-2)[0];
-					{
-						/* const matchingAkababCharacterArr = akababPeople.filter(
-						(akababCharacter) => {
-							return akababCharacter.name === swapiCharacter.name;
-						}
-					); */
-					}
-					{
-						/* console.log({ swapiCharacter, matchingAkababCharacterArr }); */
-					}
-
-					return (
-						<CharacterItem
-							swapiCharacter={swapiCharacter}
-							akababPeople={akababPeople}
-							key={index}
-						/>
-					);
-				})}
+				{swapiPeople.map((swapiCharacter, index) => (
+					<CharacterItem
+						swapiCharacter={swapiCharacter}
+						akababPeople={akababPeople}
+						key={index}
+					/>
+				))}
 			</Grid.Container>
 			<Spacer y={5} />
 			<Row justify='center' align='center'>
