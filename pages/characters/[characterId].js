@@ -13,13 +13,10 @@ import {
 
 export default function CharacterProfilePage(props) {
 	const { swapiCharacter, akababPeople } = props;
-	// console.log({ akababPeople });
 
 	const matchingAkababCharacterArr = akababPeople.filter((akababCharacter) => {
 		return akababCharacter.name === swapiCharacter.name;
 	});
-
-	// console.log({ matchingAkababCharacterArr });
 
 	if (!swapiCharacter) {
 		return (

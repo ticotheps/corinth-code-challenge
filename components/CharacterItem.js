@@ -9,7 +9,6 @@ import {
 	Spacer,
 	Link,
 } from '@nextui-org/react';
-import { useState, useEffect } from 'react';
 
 export default function CharacterItem(props) {
 	const { swapiCharacter, akababPeople } = props;
@@ -19,19 +18,6 @@ export default function CharacterItem(props) {
 	const matchingAkababCharacterArr = akababPeople.filter((akababCharacter) => {
 		return akababCharacter.name === swapiCharacter.name;
 	});
-
-	const [imageUrl, setImageUrl] = useState(null);
-
-	useEffect(() => {
-		if (matchingAkababCharacterArr.length > 0) {
-			setImageUrl(matchingAkababCharacterArr[0].image);
-		}
-	}, []);
-
-	const handleError = (e) => {
-		e.preventDefault();
-		setImageUrl(null);
-	};
 
 	const characterCard = () => (
 		<Grid>
@@ -58,15 +44,17 @@ export default function CharacterItem(props) {
 					>
 						<Card.Image
 							src={
-								imageUrl == null ? '../images/yoda_unavailable.jpg' : imageUrl
+								matchingAkababCharacterArr.length > 0
+									? matchingAkababCharacterArr[0].image
+									: '../images/yoda_unavailable.jpg'
 							}
 							onError={(e) => handleError(e)}
 							height={300}
 							width={250}
 							alt={
-								imageUrl == null
-									? 'Meme of Yoda apologizing that this image is unavailable'
-									: matchingAkababCharacterArr[0].name
+								matchingAkababCharacterArr.length > 0
+									? matchingAkababCharacterArr[0].name
+									: 'Meme of Yoda apologizing that this image is unavailable'
 							}
 							css={{
 								objectPosition: 'center top',
