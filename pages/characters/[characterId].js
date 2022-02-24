@@ -87,10 +87,17 @@ export default function CharacterProfilePage(props) {
 						<Row>
 							<Col align='right'>
 								<Text
-									h4
+									h3
 									size='1.75rem'
 									weight='bold'
-									css={{ fontSize: '2.25rem' }}
+									css={{
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
+									}}
 								>
 									Height:
 								</Text>
@@ -102,7 +109,12 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
-										fontSize: '2.25rem',
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
 									}}
 								>
 									{swapiCharacter.height} cm
@@ -112,10 +124,17 @@ export default function CharacterProfilePage(props) {
 						<Row>
 							<Col align='right'>
 								<Text
-									h4
+									h3
 									size='1.75rem'
 									weight='bold'
-									css={{ fontSize: '2.25rem' }}
+									css={{
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
+									}}
 								>
 									Mass:
 								</Text>
@@ -127,7 +146,12 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
-										fontSize: '2.25rem',
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
 									}}
 								>
 									{swapiCharacter.mass} kg
@@ -137,10 +161,17 @@ export default function CharacterProfilePage(props) {
 						<Row>
 							<Col align='right'>
 								<Text
-									h4
+									h3
 									size='1.75rem'
 									weight='bold'
-									css={{ fontSize: '2.25rem' }}
+									css={{
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
+									}}
 								>
 									Hair Color:
 								</Text>
@@ -152,7 +183,12 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
-										fontSize: '2.25rem',
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
 									}}
 								>
 									{swapiCharacter.hair_color}
@@ -162,10 +198,17 @@ export default function CharacterProfilePage(props) {
 						<Row>
 							<Col align='right'>
 								<Text
-									h4
+									h3
 									size='1.75rem'
 									weight='bold'
-									css={{ fontSize: '2.25rem' }}
+									css={{
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
+									}}
 								>
 									Skin Color:
 								</Text>
@@ -177,7 +220,12 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
-										fontSize: '2.25rem',
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
 									}}
 								>
 									{swapiCharacter.skin_color}
@@ -187,10 +235,17 @@ export default function CharacterProfilePage(props) {
 						<Row>
 							<Col align='right'>
 								<Text
-									h4
+									h3
 									size='1.75rem'
 									weight='bold'
-									css={{ fontSize: '2.25rem' }}
+									css={{
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
+									}}
 								>
 									Eye Color:
 								</Text>
@@ -202,7 +257,12 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
-										fontSize: '2.25rem',
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
 									}}
 								>
 									{swapiCharacter.eye_color}
@@ -212,10 +272,17 @@ export default function CharacterProfilePage(props) {
 						<Row>
 							<Col align='right'>
 								<Text
-									h4
+									h3
 									size='1.75rem'
 									weight='bold'
-									css={{ fontSize: '2.25rem' }}
+									css={{
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
+									}}
 								>
 									Birth Year:
 								</Text>
@@ -227,7 +294,12 @@ export default function CharacterProfilePage(props) {
 									size='1.75rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
-										fontSize: '2.25rem',
+										'@xs': {
+											fontSize: '2.5rem',
+										},
+										'@md': {
+											fontSize: '3.5rem',
+										},
 									}}
 								>
 									{swapiCharacter.birth_year}
