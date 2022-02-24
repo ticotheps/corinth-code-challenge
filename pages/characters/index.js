@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import {
 	Container,
 	Grid,
@@ -11,8 +12,23 @@ import {
 import CharacterItem from '../../components/CharacterItem';
 
 export default function CharactersPage(props) {
-	const { swapiPeople, akababPeople, nextPageSwapiPeople } = props;
-	// console.log({ swapiPeople });
+	const { swapiPeopleData, akababPeopleData, nextPageSwapiData } = props;
+	// console.log({ nextPageSwapiData });
+
+	const [swapiPeople, setSwapiPeople] = useState(swapiPeopleData);
+	const [akababPeople, setAkababPeople] = useState(akababPeopleData);
+	const [nextPageSwapi, setNextPageSwapi] = useState(nextPageSwapiData);
+	console.log({ swapiPeople, akababPeople, nextPageSwapi });
+
+	async function handleClick(e) {
+		e.preventDefault();
+		console.log({ nextPageSwapi });
+		let nextRes = await fetch(nextPageSwapi);
+		let nextData = await nextRes.json();
+		setSwapiPeople(swapiPeople.concat(nextData.results));
+		setNextPageSwapi(nextData.next);
+		console.log({ swapiPeople, nextPageSwapi });
+	}
 
 	return (
 		<Container fluid>
@@ -44,9 +60,24 @@ export default function CharactersPage(props) {
 							/>
 						))}
 					</Grid.Container>
+					{nextPageSwapi && (
+						<Grid justify='center' align='center'>
+							<Spacer y={3} />
+							<Button
+								type='submit'
+								color='gradient'
+								size='xl'
+								auto
+								rounded
+								onClick={(e) => handleClick(e)}
+							>
+								Load More
+							</Button>
+						</Grid>
+					)}
 				</Container>
 				<Grid justify='center' align='center'>
-					<Spacer y={5} />
+					<Spacer y={2} />
 					<Link href='/characters/search'>
 						<Button color='gradient' size='xl' ghost auto rounded>
 							Search Character Name
@@ -61,8 +92,6 @@ export default function CharactersPage(props) {
 async function getData(url) {
 	const res = await fetch(url);
 	const data = await res.json();
-	const nextPageOfData = data.next;
-
 	return data;
 }
 
@@ -71,13 +100,26 @@ export async function getStaticProps() {
 	const akabab_people_data = await getData(
 		'https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json'
 	);
-	console.log({ akabab_people_data });
+
+	if (!swapi_people_data) {
+		console.log('Error fetching "swapi_people_data"');
+		return {
+			notFound: true,
+		};
+	}
+
+	if (!akabab_people_data) {
+		console.log('Error fetching "akabab_people_data"');
+		return {
+			notFound: true,
+		};
+	}
 
 	return {
 		props: {
-			swapiPeople: swapi_people_data.results,
-			akababPeople: akabab_people_data,
-			nextPageSwapiPeople: swapi_people_data.next,
+			swapiPeopleData: swapi_people_data.results,
+			akababPeopleData: akabab_people_data,
+			nextPageSwapiData: swapi_people_data.next,
 		},
 	};
 }

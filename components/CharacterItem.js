@@ -66,12 +66,7 @@ export default function CharacterItem(props) {
 					<Button type='button' color='gradient' size='lg' rounded auto>
 						<NextLink href={`/characters/${swapiCharacterId}`} passHref>
 							<Link>
-								<Text
-									css={{ color: 'white' }}
-									size={18}
-									weight='bold'
-									transform='uppercase'
-								>
+								<Text css={{ color: 'white' }} size={18} weight='bold'>
 									Learn More
 								</Text>
 							</Link>
