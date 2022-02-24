@@ -1,6 +1,3 @@
-import path from 'path';
-import fs from 'fs/promises';
-
 import {
 	Container,
 	Grid,
@@ -14,7 +11,8 @@ import {
 import CharacterItem from '../../components/CharacterItem';
 
 export default function CharactersPage(props) {
-	const { swapiPeople, akababPeople } = props;
+	const { swapiPeople, akababPeople, nextPageSwapiPeople } = props;
+	// console.log({ swapiPeople });
 
 	return (
 		<Container fluid>
@@ -60,25 +58,26 @@ export default function CharactersPage(props) {
 	);
 }
 
-async function getData(dataFile) {
-	const file_path = path.join(process.cwd(), 'data', dataFile);
-	const json_data = await fs.readFile(file_path);
-	const data = JSON.parse(json_data);
+async function getData(url) {
+	const res = await fetch(url);
+	const data = await res.json();
+	const nextPageOfData = data.next;
 
 	return data;
 }
 
 export async function getStaticProps() {
-	const swapiPeopleDataFile = 'swapi_people_data.json';
-	const akababPeopleDataFile = 'akabab_people_data.json';
-
-	const swapi_people_data = await getData(swapiPeopleDataFile);
-	const akabab_people_data = await getData(akababPeopleDataFile);
+	const swapi_people_data = await getData('https://swapi.dev/api/people/');
+	const akabab_people_data = await getData(
+		'https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/all.json'
+	);
+	console.log({ akabab_people_data });
 
 	return {
 		props: {
-			swapiPeople: swapi_people_data.people,
-			akababPeople: akabab_people_data.people,
+			swapiPeople: swapi_people_data.results,
+			akababPeople: akabab_people_data,
+			nextPageSwapiPeople: swapi_people_data.next,
 		},
 	};
 }
