@@ -1,5 +1,3 @@
-import path from 'path';
-import fs from 'fs/promises';
 import {
 	Container,
 	Grid,
@@ -12,11 +10,9 @@ import {
 } from '@nextui-org/react';
 
 export default function CharacterProfilePage(props) {
-	const { swapiCharacter, akababPeople } = props;
-
-	const matchingAkababCharacterArr = akababPeople.filter((akababCharacter) => {
-		return akababCharacter.name === swapiCharacter.name;
-	});
+	const { swapiCharacterData, akababCharacterData } = props;
+	const swapiCharacter = swapiCharacterData;
+	const akababCharacter = akababCharacterData;
 
 	if (!swapiCharacter) {
 		return (
@@ -68,14 +64,11 @@ export default function CharacterProfilePage(props) {
 					<Grid xs={12} sm={4} md={5}>
 						<Card cover>
 							<Card.Image
-								src={
-									matchingAkababCharacterArr[0].image ||
-									'../images/yoda_unavailable.jpg'
-								}
+								src={akababCharacter.image || '../images/yoda_unavailable.jpg'}
 								height='auto'
 								width='100%'
 								alt={
-									matchingAkababCharacterArr[0].image ||
+									akababCharacter.name ||
 									'Meme of Yoda apologizing that this image is unavailble'
 								}
 							/>
@@ -305,36 +298,33 @@ export default function CharacterProfilePage(props) {
 	);
 }
 
-async function getData(dataFile) {
-	const file_path = path.join(process.cwd(), 'data', dataFile);
-	const json_data = await fs.readFile(file_path);
-	const data = JSON.parse(json_data);
-
+async function getData(url) {
+	const res = await fetch(url);
+	const data = await res.json();
 	return data;
 }
 
-export async function getStaticProps(context) {
-	const swapiPeopleDataFile = 'swapi_people_data.json';
-	const swapiSpeciesDataFile = 'swapi_species_data.json';
-	const swapiStarshipsDataFile = 'swapi_starships_data.json';
-	const akababPeopleDataFile = 'akabab_people_data.json';
+export async function getServerSideProps(context) {
+	const { params, res } = context;
 
-	const swapi_people_data = await getData(swapiPeopleDataFile);
-	const swapi_species_data = await getData(swapiSpeciesDataFile);
-	const swapi_starships_data = await getData(swapiStarshipsDataFile);
-	const akabab_people_data = await getData(akababPeopleDataFile);
+	const characterId = params.characterId;
 
-	// returns a single character object from the 'swapi_people_data' array that
-	// has the same character id as the character rendered on the current profile page.
-	const swapiCharacter = swapi_people_data.people.find((character) => {
-		const { params } = context;
-		const characterId = params.characterId;
-		const storedCharId = character.url.split('/').slice(-2)[0];
-		return storedCharId === characterId;
-	});
+	const swapi_character_data = await getData(
+		`https://swapi.dev/api/people/${characterId}`
+	);
+	const akabab_character_data = await getData(
+		`https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/${characterId}.json`
+	);
 
-	// renders 404 page if a character with the desired id is not found.
-	if (!swapiCharacter) {
+	if (!swapi_character_data) {
+		console.error('Error fetching "swapi_character_data"');
+		return {
+			notFound: true,
+		};
+	}
+
+	if (!akabab_character_data) {
+		console.error('Error fetching "akabab_character_data"');
 		return {
 			notFound: true,
 		};
@@ -342,29 +332,8 @@ export async function getStaticProps(context) {
 
 	return {
 		props: {
-			swapiCharacter: swapiCharacter,
-			akababPeople: akabab_people_data.people,
+			swapiCharacterData: swapi_character_data,
+			akababCharacterData: akabab_character_data,
 		},
-	};
-}
-
-export async function getStaticPaths() {
-	const swapiPeopleDataFile = 'swapi_people_data.json';
-	const swapi_people_data = await getData(swapiPeopleDataFile);
-
-	// returns an array of characters' 'id' property that has been retrieved
-	// from their 'url' property.
-	const characterIdsArr = swapi_people_data.people.map((character) => {
-		return character.url.split('/').slice(-2)[0];
-	});
-
-	// creates an array of objects needed for the 'paths' property.
-	const pathsWithParams = characterIdsArr.map((id) => ({
-		params: { characterId: id },
-	}));
-
-	return {
-		paths: pathsWithParams,
-		fallback: true,
 	};
 }

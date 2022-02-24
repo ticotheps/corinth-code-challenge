@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
 	Container,
 	Grid,
@@ -13,7 +13,6 @@ import CharacterItem from '../../components/CharacterItem';
 
 export default function CharactersPage(props) {
 	const { swapiPeopleData, akababPeopleData, nextPageSwapiData } = props;
-	// console.log({ nextPageSwapiData });
 
 	const [swapiPeople, setSwapiPeople] = useState(swapiPeopleData);
 	const [akababPeople, setAkababPeople] = useState(akababPeopleData);
@@ -22,12 +21,10 @@ export default function CharactersPage(props) {
 
 	async function handleClick(e) {
 		e.preventDefault();
-		console.log({ nextPageSwapi });
 		let nextRes = await fetch(nextPageSwapi);
 		let nextData = await nextRes.json();
 		setSwapiPeople(swapiPeople.concat(nextData.results));
 		setNextPageSwapi(nextData.next);
-		console.log({ swapiPeople, nextPageSwapi });
 	}
 
 	return (
@@ -102,14 +99,14 @@ export async function getStaticProps() {
 	);
 
 	if (!swapi_people_data) {
-		console.log('Error fetching "swapi_people_data"');
+		console.error('Error fetching "swapi_people_data"');
 		return {
 			notFound: true,
 		};
 	}
 
 	if (!akabab_people_data) {
-		console.log('Error fetching "akabab_people_data"');
+		console.error('Error fetching "akabab_people_data"');
 		return {
 			notFound: true,
 		};
