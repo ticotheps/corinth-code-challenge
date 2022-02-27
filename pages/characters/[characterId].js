@@ -11,12 +11,14 @@ import {
 } from '@nextui-org/react';
 
 export default function CharacterProfilePage(props) {
-	const { swapiCharacterData, akababCharacterData } = props;
+	// const { swapiCharacterData, akababCharacterData } = props;
 
-	const [swapiCharacter, setSwapiCharacter] = useState(swapiCharacterData);
-	// console.log({ swapiCharacter });
-	// const swapiCharacter = swapiCharacterData;
-	const akababCharacter = akababCharacterData;
+	const [swapiCharacter, setSwapiCharacter] = useState(
+		props.swapiCharacterData
+	);
+	const [akababCharacter, setAkababCharacter] = useState(
+		props.akababCharacterData
+	);
 
 	async function resolveSpeciesInfo(swapiCharacter) {
 		if (swapiCharacter.species.length > 0) {
@@ -38,8 +40,50 @@ export default function CharacterProfilePage(props) {
 		}
 	}
 
+	async function resolveFilmsInfo(swapiCharacter) {
+		if (swapiCharacter.films.length > 0) {
+			const filmsRes = await fetch(swapiCharacter.films[0]);
+			const filmsData = await filmsRes.json();
+			setSwapiCharacter((prevSwapiCharacter) => {
+				return {
+					...prevSwapiCharacter,
+					films: `"${filmsData.title}"`,
+				};
+			});
+		} else {
+			setSwapiCharacter((prevSwapiCharacter) => {
+				return {
+					...prevSwapiCharacter,
+					films: 'n/a',
+				};
+			});
+		}
+	}
+
+	async function resolveStarshipsInfo(swapiCharacter) {
+		if (swapiCharacter.starships.length > 0) {
+			const starshipsRes = await fetch(swapiCharacter.starships[0]);
+			const starshipsData = await starshipsRes.json();
+			setSwapiCharacter((prevSwapiCharacter) => {
+				return {
+					...prevSwapiCharacter,
+					starships: starshipsData.name,
+				};
+			});
+		} else {
+			setSwapiCharacter((prevSwapiCharacter) => {
+				return {
+					...prevSwapiCharacter,
+					starships: 'n/a',
+				};
+			});
+		}
+	}
+
 	useEffect(async () => {
 		resolveSpeciesInfo(swapiCharacter);
+		resolveFilmsInfo(swapiCharacter);
+		resolveStarshipsInfo(swapiCharacter);
 	}, []);
 
 	if (!swapiCharacter) {
@@ -89,16 +133,24 @@ export default function CharacterProfilePage(props) {
 				</Row>
 				<Spacer y={1} />
 				<Grid.Container gap={2} justify='space-evenly' wrap='wrap'>
-					<Grid xs={12} sm={4} md={4}>
+					<Grid>
 						<Card cover>
 							<Card.Image
 								src={akababCharacter.image || '../images/yoda_unavailable.jpg'}
 								height='auto'
-								width='100%'
+								width='50vw'
 								alt={
 									akababCharacter.name ||
 									'Meme of Yoda apologizing that this image is unavailble'
 								}
+								css={{
+									'@xs': {
+										width: '50vw',
+									},
+									'@md': {
+										width: '30vw',
+									},
+								}}
 							/>
 						</Card>
 					</Grid>
@@ -122,14 +174,14 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
 									Height:
 								</Text>
 							</Col>
-							<Spacer y={1} x={2} />
+							<Spacer y={1} x={1} />
 							<Col align='left'>
 								<Text
 									h4
@@ -140,7 +192,7 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
@@ -159,14 +211,14 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
 									Mass:
 								</Text>
 							</Col>
-							<Spacer y={1} x={2} />
+							<Spacer y={1} x={1} />
 							<Col align='left'>
 								<Text
 									h4
@@ -177,7 +229,7 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
@@ -196,14 +248,14 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
 									Hair Color:
 								</Text>
 							</Col>
-							<Spacer y={1} x={2} />
+							<Spacer y={1} x={1} />
 							<Col align='left'>
 								<Text
 									h4
@@ -214,7 +266,7 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
@@ -233,14 +285,14 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
 									Skin Color:
 								</Text>
 							</Col>
-							<Spacer y={1} x={2} />
+							<Spacer y={1} x={1} />
 							<Col align='left'>
 								<Text
 									h4
@@ -251,7 +303,7 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
@@ -270,14 +322,14 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
 									Eye Color:
 								</Text>
 							</Col>
-							<Spacer y={1} x={2} />
+							<Spacer y={1} x={1} />
 							<Col align='left'>
 								<Text
 									h4
@@ -288,7 +340,7 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
@@ -307,14 +359,14 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
 									Birth Year:
 								</Text>
 							</Col>
-							<Spacer y={1} x={2} />
+							<Spacer y={1} x={1} />
 							<Col align='left'>
 								<Text
 									h4
@@ -325,7 +377,7 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
@@ -344,14 +396,14 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
 									Species:
 								</Text>
 							</Col>
-							<Spacer y={1} x={2} />
+							<Spacer y={1} x={1} />
 							<Col align='left'>
 								<Text
 									h4
@@ -362,7 +414,7 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
@@ -381,14 +433,14 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
-									Films:
+									Film Debuts:
 								</Text>
 							</Col>
-							<Spacer y={1} x={2} />
+							<Spacer y={1} x={1} />
 							<Col align='left'>
 								<Text
 									h4
@@ -399,7 +451,7 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
@@ -418,14 +470,14 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
-									Starships:
+									Starships Flown:
 								</Text>
 							</Col>
-							<Spacer y={1} x={2} />
+							<Spacer y={1} x={1} />
 							<Col align='left'>
 								<Text
 									h4
@@ -436,7 +488,7 @@ export default function CharacterProfilePage(props) {
 											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '2.75rem',
+											fontSize: '2.5rem',
 										},
 									}}
 								>
