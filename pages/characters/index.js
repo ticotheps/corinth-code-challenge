@@ -17,7 +17,7 @@ export default function CharactersPage(props) {
 	const [swapiPeople, setSwapiPeople] = useState(swapiPeopleData);
 	const [akababPeople, setAkababPeople] = useState(akababPeopleData);
 	const [nextPageSwapi, setNextPageSwapi] = useState(nextPageSwapiData);
-	console.log({ swapiPeople, akababPeople, nextPageSwapi });
+	// console.log({ swapiPeople, akababPeople, nextPageSwapi });
 
 	async function handleClick(e) {
 		e.preventDefault();

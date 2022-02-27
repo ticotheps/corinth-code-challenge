@@ -12,8 +12,35 @@ import {
 
 export default function CharacterProfilePage(props) {
 	const { swapiCharacterData, akababCharacterData } = props;
-	const swapiCharacter = swapiCharacterData;
+
+	const [swapiCharacter, setSwapiCharacter] = useState(swapiCharacterData);
+	// console.log({ swapiCharacter });
+	// const swapiCharacter = swapiCharacterData;
 	const akababCharacter = akababCharacterData;
+
+	async function resolveSpeciesInfo(swapiCharacter) {
+		if (swapiCharacter.species.length > 0) {
+			const speciesRes = await fetch(swapiCharacter.species[0]);
+			const speciesData = await speciesRes.json();
+			setSwapiCharacter((prevSwapiCharacter) => {
+				return {
+					...prevSwapiCharacter,
+					species: speciesData.name,
+				};
+			});
+		} else {
+			setSwapiCharacter((prevSwapiCharacter) => {
+				return {
+					...prevSwapiCharacter,
+					species: 'n/a',
+				};
+			});
+		}
+	}
+
+	useEffect(async () => {
+		resolveSpeciesInfo(swapiCharacter);
+	}, []);
 
 	if (!swapiCharacter) {
 		return (
@@ -62,7 +89,7 @@ export default function CharacterProfilePage(props) {
 				</Row>
 				<Spacer y={1} />
 				<Grid.Container gap={2} justify='space-evenly' wrap='wrap'>
-					<Grid xs={12} sm={4} md={5}>
+					<Grid xs={12} sm={4} md={4}>
 						<Card cover>
 							<Card.Image
 								src={akababCharacter.image || '../images/yoda_unavailable.jpg'}
@@ -75,11 +102,10 @@ export default function CharacterProfilePage(props) {
 							/>
 						</Card>
 					</Grid>
-
 					<Grid.Container
 						xs
 						css={{
-							width: '100%',
+							width: '50%',
 							'@xs': {
 								alignContent: 'center',
 							},
@@ -89,14 +115,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='right'>
 								<Text
 									h3
-									size='1.75rem'
+									size='1.5rem'
 									weight='bold'
 									css={{
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -107,14 +133,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='left'>
 								<Text
 									h4
-									size='1.75rem'
+									size='1.5rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -126,14 +152,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='right'>
 								<Text
 									h3
-									size='1.75rem'
+									size='1.5rem'
 									weight='bold'
 									css={{
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -144,14 +170,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='left'>
 								<Text
 									h4
-									size='1.75rem'
+									size='1.5rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -163,14 +189,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='right'>
 								<Text
 									h3
-									size='1.75rem'
+									size='1.5rem'
 									weight='bold'
 									css={{
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -181,14 +207,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='left'>
 								<Text
 									h4
-									size='1.75rem'
+									size='1.5rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -200,14 +226,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='right'>
 								<Text
 									h3
-									size='1.75rem'
+									size='1.5rem'
 									weight='bold'
 									css={{
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -218,14 +244,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='left'>
 								<Text
 									h4
-									size='1.75rem'
+									size='1.5rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -237,14 +263,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='right'>
 								<Text
 									h3
-									size='1.75rem'
+									size='1.5rem'
 									weight='bold'
 									css={{
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -255,14 +281,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='left'>
 								<Text
 									h4
-									size='1.75rem'
+									size='1.5rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -274,14 +300,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='right'>
 								<Text
 									h3
-									size='1.75rem'
+									size='1.5rem'
 									weight='bold'
 									css={{
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -292,14 +318,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='left'>
 								<Text
 									h4
-									size='1.75rem'
+									size='1.5rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -307,18 +333,18 @@ export default function CharacterProfilePage(props) {
 								</Text>
 							</Col>
 						</Row>
-						{/* <Row>
+						<Row>
 							<Col align='right'>
 								<Text
 									h3
-									size='1.75rem'
+									size='1.5rem'
 									weight='bold'
 									css={{
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -329,14 +355,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='left'>
 								<Text
 									h4
-									size='1.75rem'
+									size='1.5rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -348,14 +374,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='right'>
 								<Text
 									h3
-									size='1.75rem'
+									size='1.5rem'
 									weight='bold'
 									css={{
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -366,14 +392,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='left'>
 								<Text
 									h4
-									size='1.75rem'
+									size='1.5rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -385,14 +411,14 @@ export default function CharacterProfilePage(props) {
 							<Col align='right'>
 								<Text
 									h3
-									size='1.75rem'
+									size='1.5rem'
 									weight='bold'
 									css={{
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
@@ -403,21 +429,21 @@ export default function CharacterProfilePage(props) {
 							<Col align='left'>
 								<Text
 									h4
-									size='1.75rem'
+									size='1.5rem'
 									css={{
 										textGradient: '45deg, $blue500 -20%, $pink500 50%',
 										'@xs': {
-											fontSize: '2.25rem',
+											fontSize: '2rem',
 										},
 										'@md': {
-											fontSize: '3rem',
+											fontSize: '2.75rem',
 										},
 									}}
 								>
 									{swapiCharacter.starships}
 								</Text>
 							</Col>
-						</Row> */}
+						</Row>
 					</Grid.Container>
 				</Grid.Container>
 			</Col>
@@ -456,13 +482,6 @@ export async function getServerSideProps(context) {
 			notFound: true,
 		};
 	}
-
-	// async function getSpeciesData() {
-	// 	await swapi_character_data.species.map((species_endpoint) => {
-	// 		const species_name = getData(species_endpoint);
-	// 		return species_name;
-	// 	});
-	// }
 
 	return {
 		props: {
