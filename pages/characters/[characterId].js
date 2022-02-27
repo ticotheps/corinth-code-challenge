@@ -504,7 +504,14 @@ export default function CharacterProfilePage(props) {
 }
 
 async function getData(url) {
-	const res = await fetch(url);
+	const res = await fetch(url, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Accept: 'application/json',
+			'User-Agent': '*',
+		},
+	});
 	const data = await res.json();
 	return data;
 }
