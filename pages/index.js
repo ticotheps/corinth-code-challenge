@@ -30,7 +30,7 @@ export default function HomePage() {
 				>
 					<Text
 						h1
-						size='4em'
+						size='4.5em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
 							'@xs': {
@@ -46,7 +46,7 @@ export default function HomePage() {
 					</Text>
 					<Text
 						h1
-						size='4em'
+						size='4.5em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
 							'@xs': {
@@ -62,7 +62,7 @@ export default function HomePage() {
 					</Text>
 					<Text
 						h1
-						size='4em'
+						size='4.5em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
 							'@xs': {
@@ -107,6 +107,7 @@ export default function HomePage() {
 				</Grid>
 				<Spacer y={2} />
 				<Grid justify='center' align='center'>
+					<Spacer y={1} />
 					<Text
 						h2
 						size='2rem'
@@ -122,40 +123,43 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Your one-stop-shop for the &quot;<i>deets</i>&quot; (details) on
-						your favorite Star Wars characters!
+						Your one-stop-shop for getting the &quot;<i>deets</i>&quot;
+						(details) on your favorite Star Wars characters!
 					</Text>
 					<Spacer y={2} />
 				</Grid>
+				<Row justify='center' align='center' wrap='wrap'>
+					<Grid>
+						<Link href='/characters'>
+							<Button
+								color='gradient'
+								size='xl'
+								ghost
+								rounded
+								css={{
+									'@xs': {
+										marginRight: '1rem',
+									},
+									'@md': {
+										marginRight: '2rem',
+									},
+								}}
+							>
+								Browse All Characters
+							</Button>
+						</Link>
+						<Spacer x={1} />
+					</Grid>
 
-				<Grid>
-					<Link href='/characters'>
-						<Button
-							color='gradient'
-							size='xl'
-							ghost
-							rounded
-							css={{
-								'@xs': {
-									marginRight: '1rem',
-								},
-								'@md': {
-									marginRight: '2rem',
-								},
-							}}
-						>
-							Browse All Characters
-						</Button>
-					</Link>
-					<Spacer y={1} />
-				</Grid>
-				<Grid>
-					<Link href='/characters/search'>
-						<Button color='gradient' size='xl' ghost rounded>
-							Search Character Name
-						</Button>
-					</Link>
-				</Grid>
+					<Grid>
+						<Link href='/characters/search'>
+							<Button color='gradient' size='xl' ghost rounded>
+								Search Character Name
+							</Button>
+						</Link>
+						<Spacer x={1} />
+					</Grid>
+				</Row>
 			</Grid.Container>
 		</Container>
 	);
