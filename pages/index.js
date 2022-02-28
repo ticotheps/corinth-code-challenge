@@ -30,7 +30,7 @@ export default function HomePage() {
 				>
 					<Text
 						h1
-						size='4.5em'
+						size='3.75em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
 							'@xs': {
@@ -42,11 +42,11 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Find &lsquo;em.
+						Find them.
 					</Text>
 					<Text
 						h1
-						size='4.5em'
+						size='3.75em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
 							'@xs': {
@@ -58,11 +58,11 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Meet &lsquo;em.
+						Meet them.
 					</Text>
 					<Text
 						h1
-						size='4.5em'
+						size='3.75em'
 						css={{
 							textGradient: '45deg, $blue500 -20%, $pink500 50%',
 							'@xs': {
@@ -74,7 +74,7 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Greet &lsquo;em!
+						Greet them!
 					</Text>
 				</Grid>
 				<Grid
@@ -123,8 +123,8 @@ export default function HomePage() {
 						}}
 						weight='bold'
 					>
-						Your one-stop-shop for getting the &quot;<i>deets</i>&quot;
-						(details) on your favorite Star Wars characters!
+						THE one-stop-shop for learning all about your favorite Star Wars
+						characters!
 					</Text>
 					<Spacer y={2} />
 				</Grid>
