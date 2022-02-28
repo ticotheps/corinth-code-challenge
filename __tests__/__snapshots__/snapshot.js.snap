@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<div>
+  <div
+    class="nextui-c-fdHeMm nextui-c-fdHeMm-cFpcyF-fluid-true nextui-c-fdHeMm-dwxLNB-responsive-true nextui-c-fdHeMm-iizPHCF-css"
+  >
+    <span
+      class="nextui-c-gNVTSf nextui-c-gNVTSf-hakyQ-inline-false nextui-c-gNVTSf-iepBydd-css"
+    />
+    <div
+      align="center"
+      class="nextui-c-kRHeuF nextui-c-kRHeuF-iiUqXJy-css nextui-grid-item nextui-grid-container"
+    >
+      <div
+        align="center"
+        class="nextui-c-kRHeuF nextui-c-kRHeuF-ildGSno-css nextui-grid-item"
+      >
+        <h1
+          class="nextui-c-PJLV nextui-c-PJLV-hyvuql-weight-bold nextui-c-PJLV-icEfWBv-css"
+        >
+          Find ‘em.
+        </h1>
+        <h1
+          class="nextui-c-PJLV nextui-c-PJLV-hyvuql-weight-bold nextui-c-PJLV-icEfWBv-css"
+        >
+          Meet ‘em.
+        </h1>
+        <h1
+          class="nextui-c-PJLV nextui-c-PJLV-hyvuql-weight-bold nextui-c-PJLV-icEfWBv-css"
+        >
+          Greet ‘em!
+        </h1>
+      </div>
+      <div
+        align="center"
+        class="nextui-c-kRHeuF nextui-c-kRHeuF-ihhFzJT-css nextui-grid-item"
+      >
+        <span
+          class="nextui-c-gNVTSf nextui-c-gNVTSf-hakyQ-inline-false nextui-c-gNVTSf-ieQSXqB-css"
+        />
+        <div
+          class="nextui-c-kltynt nextui-c-kltynt-kQghEc-color-default nextui-c-kltynt-iVCgFB-shadow-true nextui-c-kltynt-bVtBym-bordered-false nextui-c-kltynt-bzEnZV-borderWeight-normal nextui-c-kltynt-iNKybL-animated-true nextui-c-kltynt-ifTMkJ-cover-false nextui-c-kltynt-kQghEc-cv nextui-c-kltynt-ihGunwp-css"
+          role="section"
+          tabindex="-1"
+        >
+          <div
+            class="nextui-c-gJBdwd"
+          >
+            <div
+              class="nextui-c-bVLlAJ nextui-c-bVLlAJ-cCitdK-ready-false nextui-c-bVLlAJ-iddIiTA-css nextui-image-container nextui-image--loading"
+              data-state="loading"
+            >
+              <div
+                class="nextui-c-eaDpBR nextui-c-eaDpBR-ibDGmTT-css nextui-image-skeleton"
+              />
+              <img
+                alt="Darth Vader coffee meme"
+                class="nextui-c-kbhVdb nextui-c-kbhVdb-ikZHsFe-css nextui-image"
+                data-state="loading"
+                height="400"
+                src="../images/hero_image.jpg"
+                width="100%"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <span
+        class="nextui-c-gNVTSf nextui-c-gNVTSf-hakyQ-inline-false nextui-c-gNVTSf-ieQSXqB-css"
+      />
+      <div
+        align="center"
+        class="nextui-c-kRHeuF nextui-c-kRHeuF-iljckFQ-css nextui-grid-item"
+      >
+        <span
+          class="nextui-c-gNVTSf nextui-c-gNVTSf-hakyQ-inline-false nextui-c-gNVTSf-iepBydd-css"
+        />
+        <h2
+          class="nextui-c-PJLV nextui-c-PJLV-hyvuql-weight-bold nextui-c-PJLV-ikuzvCx-css"
+        >
+          Your one-stop-shop for getting the "
+          <i>
+            deets
+          </i>
+          " (details) on your favorite Star Wars characters!
+        </h2>
+        <span
+          class="nextui-c-gNVTSf nextui-c-gNVTSf-hakyQ-inline-false nextui-c-gNVTSf-ieQSXqB-css"
+        />
+      </div>
+      <div
+        class="nextui-c-dfbgCO nextui-c-dfbgCO-fGHEql-fluid-true nextui-c-dfbgCO-icmHrWA-css"
+      >
+        <div
+          class="nextui-c-kRHeuF nextui-c-kRHeuF-igNCIse-css nextui-grid-item"
+        >
+          <a
+            class="nextui-c-bIaldF nextui-c-bIaldF-eAdznm-color-default nextui-c-bIaldF-iNKybL-animated-true"
+            href="/characters"
+          >
+            <button
+              class="nextui-c-gnEedP nextui-c-PJLV nextui-c-gnEedP-iaomLu-bordered-true nextui-c-gnEedP-hZOnFf-ghost-true nextui-c-gnEedP-kUMTig-color-gradient nextui-c-gnEedP-idhVzp-size-xl nextui-c-gnEedP-bzEnZV-borderWeight-normal nextui-c-gnEedP-yxrPS-animated-true nextui-c-gnEedP-euJLgm-rounded-true nextui-c-gnEedP-dQiwtc-cv nextui-c-gnEedP-fgOxQa-cv nextui-c-gnEedP-fLmgSu-cv nextui-c-gnEedP-euJLgm-cv nextui-c-gnEedP-ieVCAtY-css nextui-button nextui-button--ready"
+              data-state="ready"
+            >
+              <span
+                class="nextui-button-text"
+              >
+                Browse All Characters
+              </span>
+            </button>
+          </a>
+          <span
+            class="nextui-c-gNVTSf nextui-c-gNVTSf-hakyQ-inline-false nextui-c-gNVTSf-iepBydd-css"
+          />
+        </div>
+        <div
+          class="nextui-c-kRHeuF nextui-c-kRHeuF-igNCIse-css nextui-grid-item"
+        >
+          <a
+            class="nextui-c-bIaldF nextui-c-bIaldF-eAdznm-color-default nextui-c-bIaldF-iNKybL-animated-true"
+            href="/characters/search"
+          >
+            <button
+              class="nextui-c-gnEedP nextui-c-PJLV nextui-c-gnEedP-iaomLu-bordered-true nextui-c-gnEedP-hZOnFf-ghost-true nextui-c-gnEedP-kUMTig-color-gradient nextui-c-gnEedP-idhVzp-size-xl nextui-c-gnEedP-bzEnZV-borderWeight-normal nextui-c-gnEedP-yxrPS-animated-true nextui-c-gnEedP-euJLgm-rounded-true nextui-c-gnEedP-dQiwtc-cv nextui-c-gnEedP-fgOxQa-cv nextui-c-gnEedP-fLmgSu-cv nextui-c-gnEedP-euJLgm-cv nextui-button nextui-button--ready"
+              data-state="ready"
+            >
+              <span
+                class="nextui-button-text"
+              >
+                Search Character Name
+              </span>
+            </button>
+          </a>
+          <span
+            class="nextui-c-gNVTSf nextui-c-gNVTSf-hakyQ-inline-false nextui-c-gNVTSf-iepBydd-css"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
