@@ -11,6 +11,6 @@ test('renders three header elements on the Home Page', () => {
 
 test('renders two button elements on the Home Page', () => {
 	render(<HomePage />);
-	expect(screen.getByText('Browse All Characters')).toBeInTheDocument();
-	expect(screen.getByText('Search Character Name')).toBeInTheDocument();
+	expect(screen.getByText(/browse all characters/i)).toBeInTheDocument();
+	expect(screen.getByText(/search character name/i)).toBeInTheDocument();
 });
